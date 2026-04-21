@@ -4,7 +4,7 @@
 # https://www.terraform.io/language/settings/backends/gcs
 terraform {
   backend "gcs" {
-    bucket = "illinitf_marvin"
+    bucket = "illinitf-marvin-evins-2026"
     prefix = "terraform/state"
   }
 }

@@ -14,7 +14,7 @@ terraform {
 }
 
 provider "google" {
-  project = "seir-1-490120"
+  project = "training-416401"
   region  = "us-central1"
 #   credentials = file("C:\\Users\\marvi\\AppData\\Roaming\\gcloud\\application_default_credentials.json")
 }
