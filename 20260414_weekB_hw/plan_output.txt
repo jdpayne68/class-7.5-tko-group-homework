@@ -1,0 +1,258 @@
+[0m[1mgoogle_compute_firewall.chewbacca_allow_http: Refreshing state... [id=projects/dusty-warrior-project/global/firewalls/chewbacca-allow-http][0m
+[0m[1mgoogle_compute_instance.chewbacca_vm: Refreshing state... [id=projects/dusty-warrior-project/zones/us-central1-a/instances/chewbacca-node-lab2][0m
+
+[1m[36mNote:[0m[1m Objects have changed outside of Terraform
+[0m
+Terraform detected the following changes made outside of Terraform since the
+last "terraform apply" which may have affected this plan:
+
+[1m  # google_compute_instance.chewbacca_vm[0m has been deleted
+[0m  [31m-[0m[0m resource "google_compute_instance" "chewbacca_vm" {
+        id                         = "projects/dusty-warrior-project/zones/us-central1-a/instances/chewbacca-node-lab2"
+        name                       = "chewbacca-node-lab2"
+        tags                       = [
+            "chewbacca-web",
+        ]
+        [90m# (24 unchanged attributes hidden)[0m[0m
+
+      [31m-[0m[0m network_interface {
+            name                        = "nic0"
+            [90m# (14 unchanged attributes hidden)[0m[0m
+
+          [31m-[0m[0m access_config {
+                [90m# (3 unchanged attributes hidden)[0m[0m
+            }
+        }
+
+        [90m# (3 unchanged blocks hidden)[0m[0m
+    }
+
+
+Unless you have made equivalent changes to your configuration, or ignored the
+relevant attributes using ignore_changes, the following plan may include
+actions to undo or respond to these changes.
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # google_compute_instance.chewbacca_vm[0m will be created
+[0m  [32m+[0m[0m resource "google_compute_instance" "chewbacca_vm" {
+      [32m+[0m[0m can_ip_forward          = false
+      [32m+[0m[0m cpu_platform            = (known after apply)
+      [32m+[0m[0m creation_timestamp      = (known after apply)
+      [32m+[0m[0m current_status          = (known after apply)
+      [32m+[0m[0m deletion_protection     = false
+      [32m+[0m[0m effective_labels        = {
+          [32m+[0m[0m "goog-terraform-provisioned" = "true"
+        }
+      [32m+[0m[0m id                      = (known after apply)
+      [32m+[0m[0m instance_id             = (known after apply)
+      [32m+[0m[0m label_fingerprint       = (known after apply)
+      [32m+[0m[0m machine_type            = "e2-micro"
+      [32m+[0m[0m metadata                = {
+          [32m+[0m[0m "student_name" = "Kamau"
+        }
+      [32m+[0m[0m metadata_fingerprint    = (known after apply)
+      [32m+[0m[0m metadata_startup_script = <<-EOT
+            #!/bin/bash
+            set -euo pipefail
+            
+            #Chewbacca: This node serves proof-of-life.
+            apt-get update -y
+            apt-get install -y nginx curl jq
+            
+            METADATA="http://metadata.google.internal/computeMetadata/v1"
+            HDR="Metadata-Flavor: Google"
+            md() { curl -fsS -H "$HDR" "${METADATA}/$1" || echo "unknown"; }
+            
+            INSTANCE_NAME="$(md instance/name)"
+            HOSTNAME="$(hostname)"
+            PROJECT_ID="$(md project/project-id)"
+            ZONE_FULL="$(md instance/zone)"
+            ZONE="${ZONE_FULL##*/}"
+            REGION="${ZONE%-*}"
+            
+            INTERNAL_IP="$(md instance/network-interfaces/0/ip)"
+            EXTERNAL_IP="$(md instance/network-interfaces/0/access-configs/0/external-ip)"
+            VPC_FULL="$(md instance/network-interfaces/0/network)"
+            SUBNET_FULL="$(md instance/network-interfaces/0/subnetwork)"
+            VPC="${VPC_FULL##*/}"
+            SUBNET="${SUBNET_FULL##*/}"
+            
+            STUDENT_NAME="$(md instance/attributes/student_name)"
+            [[ -z "$STUDENT_NAME" || "$STUDENT_NAME" == "unknown" ]] && STUDENT_NAME="Anonymous Padawan (temporarily)"
+            
+            START_TIME_UTC="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+            UPTIME="$(uptime -p || true)"
+            LOADAVG="$(awk '{print $1" "$2" "$3}' /proc/loadavg 2>/dev/null || echo "unknown")"
+            
+            MEM_TOTAL_MB="$(free -m | awk '/Mem:/ {print $2}')"
+            MEM_USED_MB="$(free -m | awk '/Mem:/ {print $3}')"
+            MEM_FREE_MB="$(free -m | awk '/Mem:/ {print $4}')"
+            
+            DISK_LINE="$(df -h / | tail -n 1)"
+            DISK_SIZE="$(echo "$DISK_LINE" | awk '{print $2}')"
+            DISK_USED="$(echo "$DISK_LINE" | awk '{print $3}')"
+            DISK_AVAIL="$(echo "$DISK_LINE" | awk '{print $4}')"
+            DISK_USEP="$(echo "$DISK_LINE" | awk '{print $5}')"
+            
+            cat > /etc/nginx/sites-available/default <<'EOF'
+            server {
+                listen 80 default_server;
+                listen [::]:80 default_server;
+            
+                root /var/www/html;
+                index index.html;
+            
+                location = / {
+                    try_files /index.html =404;
+                }
+            
+                location = /healthz {
+                    default_type text/plain;
+                    return 200 "ok\n";
+                }
+            
+                location = /metadata {
+                    default_type application/json;
+                    try_files /metadata.json =404;
+                }
+            }
+            EOF
+            
+            cat > /var/www/html/metadata.json <<EOF
+            {
+              "service": "seir-i-node",
+              "student_name": "$STUDENT_NAME",
+              "project_id": "$PROJECT_ID",
+              "instance_name": "$INSTANCE_NAME",
+              "hostname": "$HOSTNAME",
+              "region": "$REGION",
+              "zone": "$ZONE",
+              "network": {
+                "vpc": "$VPC",
+                "subnet": "$SUBNET",
+                "internal_ip": "$INTERNAL_IP",
+                "external_ip": "$EXTERNAL_IP"
+              },
+              "health": {
+                "uptime": "$UPTIME",
+                "load_avg": "$LOADAVG",
+                "ram_mb": {"used": $MEM_USED_MB, "free": $MEM_FREE_MB, "total": $MEM_TOTAL_MB},
+                "disk_root": {"size": "$DISK_SIZE", "used": "$DISK_USED", "avail": "$DISK_AVAIL", "use_pct": "$DISK_USEP"}
+              },
+              "startup_utc": "$START_TIME_UTC"
+            }
+            EOF
+            
+            cat > /var/www/html/index.html <<EOF
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="utf-8"/>
+              <title>SEIR-I Lab 2 — Terraform Node</title>
+              <meta http-equiv="refresh" content="10">
+              <style>
+                body { background:#0b0c10; color:#c5c6c7; font-family: monospace; }
+                .wrap { max-width: 900px; margin: 40px auto; padding: 20px; border:1px solid #45a29e; border-radius:12px; }
+                h1 { color:#66fcf1; }
+                .k { color:#66fcf1; }
+                a { color:#66fcf1; }
+              </style>
+            </head>
+            <body>
+              <div class="wrap">
+                <h1>⚡ SEIR-I Lab 2 — Terraform Deployment Success ⚡</h1>
+                <p><span class="k">Deploy Banner:</span> $STUDENT_NAME</p>
+                <p><span class="k">Region:</span> $REGION <span class="k">Zone:</span> $ZONE</p>
+                <p><span class="k">VPC:</span> $VPC <span class="k">Subnet:</span> $SUBNET</p>
+                <p><span class="k">External IP:</span> $EXTERNAL_IP</p>
+                <p><a href="/healthz">/healthz</a> | <a href="/metadata">/metadata</a></p>
+                <p>#Chewbacca: You didn’t click your way here. You automated.</p>
+              </div>
+            </body>
+            </html>
+            EOF
+            
+            systemctl enable nginx >/dev/null 2>&1 || true
+            systemctl restart nginx
+        EOT
+      [32m+[0m[0m min_cpu_platform        = (known after apply)
+      [32m+[0m[0m name                    = "chewbacca-node-lab2"
+      [32m+[0m[0m project                 = "kamau-lab4-2026"
+      [32m+[0m[0m self_link               = (known after apply)
+      [32m+[0m[0m tags                    = [
+          [32m+[0m[0m "chewbacca-web",
+        ]
+      [32m+[0m[0m tags_fingerprint        = (known after apply)
+      [32m+[0m[0m terraform_labels        = {
+          [32m+[0m[0m "goog-terraform-provisioned" = "true"
+        }
+      [32m+[0m[0m zone                    = "us-central1-a"
+
+      [32m+[0m[0m boot_disk {
+          [32m+[0m[0m auto_delete                = true
+          [32m+[0m[0m device_name                = (known after apply)
+          [32m+[0m[0m disk_encryption_key_sha256 = (known after apply)
+          [32m+[0m[0m guest_os_features          = (known after apply)
+          [32m+[0m[0m kms_key_self_link          = (known after apply)
+          [32m+[0m[0m mode                       = "READ_WRITE"
+          [32m+[0m[0m source                     = (known after apply)
+
+          [32m+[0m[0m initialize_params {
+              [32m+[0m[0m architecture           = (known after apply)
+              [32m+[0m[0m image                  = "debian-cloud/debian-12"
+              [32m+[0m[0m labels                 = (known after apply)
+              [32m+[0m[0m provisioned_iops       = (known after apply)
+              [32m+[0m[0m provisioned_throughput = (known after apply)
+              [32m+[0m[0m resource_policies      = (known after apply)
+              [32m+[0m[0m size                   = (known after apply)
+              [32m+[0m[0m snapshot               = (known after apply)
+              [32m+[0m[0m type                   = (known after apply)
+            }
+        }
+
+      [32m+[0m[0m confidential_instance_config (known after apply)
+
+      [32m+[0m[0m guest_accelerator (known after apply)
+
+      [32m+[0m[0m network_interface {
+          [32m+[0m[0m igmp_query                  = (known after apply)
+          [32m+[0m[0m internal_ipv6_prefix_length = (known after apply)
+          [32m+[0m[0m ipv6_access_type            = (known after apply)
+          [32m+[0m[0m ipv6_address                = (known after apply)
+          [32m+[0m[0m name                        = (known after apply)
+          [32m+[0m[0m network                     = "default"
+          [32m+[0m[0m network_attachment          = (known after apply)
+          [32m+[0m[0m network_ip                  = (known after apply)
+          [32m+[0m[0m parent_nic_name             = (known after apply)
+          [32m+[0m[0m stack_type                  = (known after apply)
+          [32m+[0m[0m subnetwork                  = (known after apply)
+          [32m+[0m[0m subnetwork_project          = (known after apply)
+
+          [32m+[0m[0m access_config {
+              [32m+[0m[0m nat_ip       = (known after apply)
+              [32m+[0m[0m network_tier = (known after apply)
+            }
+        }
+
+      [32m+[0m[0m reservation_affinity (known after apply)
+
+      [32m+[0m[0m scheduling (known after apply)
+    }
+
+[1mPlan:[0m [0m1 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  [33m~[0m[0m vm_external_ip = [90mnull[0m[0m -> (known after apply)
+  [33m~[0m[0m vm_url         = "http://" -> (known after apply)
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
