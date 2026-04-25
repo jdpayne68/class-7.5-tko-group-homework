@@ -1,0 +1,18 @@
+{
+  "student_name": "Kirk Alton",
+  "project_id": "kirk-devsecops-sandbox",
+  "instance_id": "7608709059575556782",
+  "instance_name": "devsecops-dashboard",
+  "hostname": "devsecops-dashboard.us-central1-a.c.kirk-devsecops-sandbox.internal",
+  "machine_type": "e2-medium",
+  "network": {
+    "vpc": "main",
+    "subnet": "unknown",
+    "internal_ip": "10.0.0.8",
+    "external_ip": "34.71.136.183"
+  },
+  "region": "us-central1",
+  "zone": "us-central1-a",
+  "startup_utc": "2026-04-17T02:36:47Z",
+  "uptime": "up 35 minutes"
+}

@@ -1,0 +1,7 @@
+{
+  "instance_id": "201812188375033832",
+  "hostname": "devsecops-dashboard.us-central1-a.c.kirk-devsecops-sandbox.internal",
+  "machine_type": "e2-medium",
+  "internal_ip": "10.0.0.2",
+  "external_ip": "34.123.157.178"
+}
