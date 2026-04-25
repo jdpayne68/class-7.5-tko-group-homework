@@ -1,37 +1,129 @@
-# Local .terraform directories
+# ───────────────────────────────
+# Runtime Logs
+# ───────────────────────────────
+
+# Logs
+*.log
+
+# Crash logs
+crash.*
+
+# ───────────────────────────────
+# Secrets
+# ───────────────────────────────
+
+Secrets
+.env
+*.pem
+
+# ───────────────────────────────
+# JSON Secrets
+# ───────────────────────────────
+# Use consistent naming conventions
+# for JSON secrets
+
+# GCP service account keys
+# Primary naming convention: gcp-sa-<purpose>-<project>.json
+**/gcp-sa-*.json
+
+# Fallback patterns for non-standard naming
+*service-account*.json
+*credentials*.json
+
+
+# ───────────────────────────────
+# Packages & Archives
+# ───────────────────────────────
+
+*.zip
+*.rpm
+rpm_packages/
+
+
+# ───────────────────────────────
+# Python
+# ───────────────────────────────
+
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+.venv/
+venv/
+env/
+
+*.egg-info/
+dist/
+build/
+
+
+# ───────────────────────────────
+# Jupyter
+# ───────────────────────────────
+
+**/.ipynb_checkpoints
+.jupyter/
+python_sandbox.ipynb
+sandbox.ipynb
+
+
+# ───────────────────────────────
+# IDE / Editor
+# ───────────────────────────────
+
+.DS_Store
+
+.idea/*
+!.idea/*.iml
+!.idea/vcs.xml
+!.idea/modules.xml
+
+# ───────────────────────────────
+# Terraform
+# ───────────────────────────────
+
+# Terraform working directories created by `terraform init`
 .terraform/
 
-# .tfstate files
+# Terraform state files (may contain sensitive data)
 *.tfstate
 *.tfstate.*
 
-# Crash log files
-crash.log
-crash.*.log
-
-# Exclude all .tfvars files, which are likely to contain sensitive data, such as
-# password, private keys, and other secrets. These should not be part of version 
-# control as they are data points which are potentially sensitive and subject 
-# to change depending on the environment.
+# Terraform variable files (often contain secrets or environment-specific values)
 *.tfvars
 *.tfvars.json
+*.tfvars.local
 
-# Ignore override files as they are usually used to override resources locally and so
-# are not checked in
+# Local override files (used for local experimentation)
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Ignore transient lock info files created by terraform apply
+# Terraform lock info file (transient)
 .terraform.tfstate.lock.info
 
-# Include override files you do wish to add to version control using negated pattern
-# !example_override.tf
+# Terraform plan outputs (binary, environment-specific)
+*.tfplan
 
-# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
-# example: *tfplan*
-
-# Ignore CLI configuration files
+# Terraform CLI configuration files
 .terraformrc
 terraform.rc
+
+# ───────────────────────────────
+# Terraform Rendered Artifacts
+# ───────────────────────────────
+# Ignore generated artifacts in rendered/.
+# The .gitkeep file preserves the directory so Terraform
+# local_file outputs have a valid path.
+
+rendered/*
+!rendered/.gitkeep
+
+# ───────────────────────────────
+# Miscellaneous
+# ───────────────────────────────
+
+backup/
