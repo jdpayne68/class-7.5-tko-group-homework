@@ -1,0 +1,16 @@
+{
+  "lab": "SEIR-I Lab 2 (Terraform)",
+  "target": "34.66.116.71",
+  "status": "PASS",
+  "details": [
+  "PASS: / returns 200",
+  "PASS: /healthz == ok",
+  "PASS: /metadata valid JSON",
+  "PASS: metadata has region",
+  "PASS: metadata has VPC",
+  "PASS: metadata has subnet"
+],
+  "failures": [
+  ""
+]
+}
