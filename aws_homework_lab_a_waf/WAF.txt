@@ -1,0 +1,13 @@
+Where does WAF sit?
+It sits at layer 7, intercepting and inspecting HTTP/HTTPS
+
+What happens if WAF blocks?
+its stopping what it believes to be a malicious attack from reaching the backend, it inspects before it hits web server, returns a error response, request is terminated, and the event is logged.
+
+Why is this important?
+It helps protect web applications by filtering and monitoring HTTP traffic between a web application and the internet. 
+
+What kind of attacks does WAF stop?
+SQL injection, cross-site scripting, cross-site forgery and file inclusion, DDoS attacks, can help data loss, and bots
+
+https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/
