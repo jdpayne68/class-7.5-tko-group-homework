@@ -431,7 +431,7 @@ Document whether they were able to access:
 
 ### Screenshot 1: Project Folder in VS Code
 
-![VScode Folder](/screenshots/01-vscode_folder.png)
+![VScode Folder](/screenshots/01-vscode_folder.PNG)
 
 Description:
 
