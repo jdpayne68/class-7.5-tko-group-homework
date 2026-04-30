@@ -1,0 +1,389 @@
+maevins@cloudshell:~ (training-416401)$ gcloud compute routes create route-to-vpc-3 \
+  --network custom-vpc-1 \
+  --destination-range 10.5.0.0/24 \
+  --next-hop-vpn-tunnel tunnel-1 \
+  --next-hop-vpn-tunnel-region us-central1
+Created [https://www.googleapis.com/compute/v1/projects/training-416401/global/routes/route-to-vpc-3].
+NAME: route-to-vpc-3
+NETWORK: custom-vpc-1
+DEST_RANGE: 10.5.0.0/24
+NEXT_HOP: us-central1/vpnTunnels/tunnel-1
+PRIORITY: 1000
+maevins@cloudshell:~ (training-416401)$ gcloud compute routes create route-to-vpc-1 \
+  --network custom-vpc-network-3 \
+  --destination-range 10.1.0.0/24 \
+  --next-hop-vpn-tunnel tunnel-2 \
+  --next-hop-vpn-tunnel-region us-east1
+Created [https://www.googleapis.com/compute/v1/projects/training-416401/global/routes/route-to-vpc-1].
+NAME: route-to-vpc-1
+NETWORK: custom-vpc-network-3
+DEST_RANGE: 10.1.0.0/24
+NEXT_HOP: us-east1/vpnTunnels/tunnel-2
+PRIORITY: 1000
+maevins@cloudshell:~ (training-416401)$ gcloud compute routes list
+NAME: default-route-01afe4e70180a452
+NETWORK: default
+DEST_RANGE: 10.162.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-02190b8291898198
+NETWORK: default
+DEST_RANGE: 10.208.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-04031924bf76c75d
+NETWORK: default
+DEST_RANGE: 10.154.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-0f924b15fa645cdc
+NETWORK: default
+DEST_RANGE: 10.186.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-0fd89de83a3d15a0
+NETWORK: default
+DEST_RANGE: 10.214.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-1883fa2138fa09d1
+NETWORK: default
+DEST_RANGE: 10.200.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-1afb4ccd801d3373
+NETWORK: default
+DEST_RANGE: 10.140.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-20dfdadb90f38954
+NETWORK: default
+DEST_RANGE: 10.192.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-2ea02a8f80efc024
+NETWORK: default
+DEST_RANGE: 10.168.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-3125f48e11f15012
+NETWORK: default
+DEST_RANGE: 10.170.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-37bf5ab107a06afe
+NETWORK: default
+DEST_RANGE: 10.194.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-3ee8c8400fbe1920
+NETWORK: default
+DEST_RANGE: 10.172.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-4433e838c81a99c1
+NETWORK: default
+DEST_RANGE: 10.184.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-45355fcdc2eceb50
+NETWORK: default
+DEST_RANGE: 0.0.0.0/0
+NEXT_HOP: default-internet-gateway
+PRIORITY: 1000
+
+NAME: default-route-475d4d42157a1fa4
+NETWORK: default
+DEST_RANGE: 10.138.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-48e8c93f7f590439
+NETWORK: main-2
+DEST_RANGE: 0.0.0.0/0
+NEXT_HOP: default-internet-gateway
+PRIORITY: 1000
+
+NAME: default-route-4e1c2bef5752f7ab
+NETWORK: default
+DEST_RANGE: 10.218.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-4e39f24ccc7af954
+NETWORK: default
+DEST_RANGE: 10.220.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-66e89ac32ea23177
+NETWORK: default
+DEST_RANGE: 10.224.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-72514404fe516552
+NETWORK: default
+DEST_RANGE: 10.212.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-754e25caa9f380c1
+NETWORK: default
+DEST_RANGE: 10.164.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-76ae8c8e6e6e33ac
+NETWORK: default
+DEST_RANGE: 10.206.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-7746ca3e4573dd61
+NETWORK: default
+DEST_RANGE: 10.202.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-81cb06ac0802e69e
+NETWORK: default
+DEST_RANGE: 10.178.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-891b38f4dd8c2aa0
+NETWORK: default
+DEST_RANGE: 10.158.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-9432dd6cf9ea2c65
+NETWORK: default
+DEST_RANGE: 10.128.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-96e6d0e9af254e91
+NETWORK: default
+DEST_RANGE: 10.148.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-a1b582423d507c90
+NETWORK: default
+DEST_RANGE: 10.198.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-a385c80ef89d8360
+NETWORK: default
+DEST_RANGE: 10.132.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-a5b4c6379bc5604e
+NETWORK: custom-vpc-1
+DEST_RANGE: 0.0.0.0/0
+NEXT_HOP: default-internet-gateway
+PRIORITY: 1000
+
+NAME: default-route-a7619c8e254733f8
+NETWORK: default
+DEST_RANGE: 10.204.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-ab6345c29b908958
+NETWORK: default
+DEST_RANGE: 10.150.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-ab6593bf4fcdbb45
+NETWORK: default
+DEST_RANGE: 10.142.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-acaef690945026be
+NETWORK: default
+DEST_RANGE: 10.100.1.0/24
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-b6b9b55d59ded68a
+NETWORK: default
+DEST_RANGE: 10.216.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-bc0dd55435510a53
+NETWORK: default
+DEST_RANGE: 10.210.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-c01382907f492faf
+NETWORK: default
+DEST_RANGE: 10.182.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-cabdd6db9f70bf97
+NETWORK: default
+DEST_RANGE: 10.160.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-cfda270d376a8479
+NETWORK: default
+DEST_RANGE: 10.152.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-d269b4e36750d4b8
+NETWORK: default
+DEST_RANGE: 10.174.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-da765d2add5de33b
+NETWORK: default
+DEST_RANGE: 10.180.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-dc932adb4d36af0f
+NETWORK: custom-vpc-network-3
+DEST_RANGE: 0.0.0.0/0
+NEXT_HOP: default-internet-gateway
+PRIORITY: 1000
+
+NAME: default-route-dd2e59afc8f2c1e6
+NETWORK: default
+DEST_RANGE: 10.190.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-dece66f9810ba0c9
+NETWORK: main
+DEST_RANGE: 0.0.0.0/0
+NEXT_HOP: default-internet-gateway
+PRIORITY: 1000
+
+NAME: default-route-e95a86ac29aa77be
+NETWORK: default
+DEST_RANGE: 10.156.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-f2920a0c6e27b24c
+NETWORK: default
+DEST_RANGE: 10.146.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-fc34f6d33f88e797
+NETWORK: default
+DEST_RANGE: 10.166.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-ff1c7e3ea3203a4e
+NETWORK: default
+DEST_RANGE: 10.196.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-ff309870469ba98f
+NETWORK: default
+DEST_RANGE: 10.188.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-r-1662e22d12c3ed98
+NETWORK: main-2
+DEST_RANGE: 10.248.0.0/14
+NEXT_HOP: main-2
+PRIORITY: 0
+
+NAME: default-route-r-594013d72246e353
+NETWORK: main
+DEST_RANGE: 10.48.0.0/14
+NEXT_HOP: main
+PRIORITY: 0
+
+NAME: default-route-r-5b2f39f29829f72f
+NETWORK: main
+DEST_RANGE: 10.52.0.0/20
+NEXT_HOP: main
+PRIORITY: 0
+
+NAME: default-route-r-71d7b5c7ada06179
+NETWORK: default
+DEST_RANGE: 10.232.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-r-9201b59c3fbc58f2
+NETWORK: default
+DEST_RANGE: 10.226.0.0/20
+NEXT_HOP: default
+PRIORITY: 0
+
+NAME: default-route-r-a768e7fa85f64e7e
+NETWORK: custom-vpc-network-3
+DEST_RANGE: 10.7.0.0/24
+NEXT_HOP: custom-vpc-network-3
+PRIORITY: 0
+
+NAME: default-route-r-b82aec782adfd1e1
+NETWORK: main
+DEST_RANGE: 10.0.0.0/18
+NEXT_HOP: main
+PRIORITY: 0
+
+NAME: default-route-r-d189469d256afc54
+NETWORK: custom-vpc-1
+DEST_RANGE: 10.5.5.0/24
+NEXT_HOP: custom-vpc-1
+PRIORITY: 0
+
+NAME: default-route-r-e0796e879e0c726f
+NETWORK: main-2
+DEST_RANGE: 10.252.0.0/20
+NEXT_HOP: main-2
+PRIORITY: 0
+
+NAME: default-route-r-e814d051247e966b
+NETWORK: main-2
+DEST_RANGE: 10.1.0.0/18
+NEXT_HOP: main-2
+PRIORITY: 0
+
+NAME: route-to-vpc-1
+NETWORK: custom-vpc-network-3
+DEST_RANGE: 10.1.0.0/24
+NEXT_HOP: us-east1/vpnTunnels/tunnel-2
+PRIORITY: 1000
+
+NAME: route-to-vpc-3
+NETWORK: custom-vpc-1
+DEST_RANGE: 10.5.0.0/24
+NEXT_HOP: us-central1/vpnTunnels/tunnel-1
+PRIORITY: 1000
+maevins@cloudshell:~ (training-416401)$ 
