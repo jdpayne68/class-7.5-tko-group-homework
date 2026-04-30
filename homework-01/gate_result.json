@@ -1,0 +1,15 @@
+{
+  "lab": "SEIR-I Lab 1",
+  "target": "34.134.36.109",
+  "status": "PASS",
+  "details": [
+  "PASS: Homepage reachable (HTTP 200)",
+  "PASS: /healthz endpoint returned 'ok'",
+  "PASS: /metadata returned valid JSON",
+  "PASS: metadata contains instance_name",
+  "PASS: metadata contains region"
+],
+  "failures": [
+  ""
+]
+}
