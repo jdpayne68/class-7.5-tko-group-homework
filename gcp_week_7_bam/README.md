@@ -689,12 +689,7 @@ code .
 
 **Author:** `Joe Tolliver`
 
-**Contributors:**
-
-- `[ADD CONTRIBUTOR NAME HERE]`
-- `[ADD CONTRIBUTOR NAME HERE]`
-
-**Group Leader:** `Jacques Paune`
+**Group Leader:** `Jacques Payne`
 
 **Group Name:** `T.K.O.`
 
