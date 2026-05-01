@@ -1,0 +1,168 @@
+terraform state show google_compute_instance.this
+# google_compute_instance.this:
+resource "google_compute_instance" "this" {
+    can_ip_forward             = false
+    cpu_platform               = "Intel Broadwell"
+    creation_timestamp         = "2026-04-30T15:45:22.825-07:00"
+    current_status             = "RUNNING"
+    deletion_protection        = false
+    description                = null
+    effective_labels           = {
+        "goog-terraform-provisioned" = "true"
+    }
+    enable_display             = false
+    hostname                   = null
+    id                         = "projects/training-416401/zones/us-central1-a/instances/cloudshell"
+    instance_id                = "5091163440146179437"
+    key_revocation_action_type = null
+    label_fingerprint          = "vezUS-42LLM="
+    machine_type               = "e2-small"
+    metadata_fingerprint       = "nHL9OzzQEPo="
+    metadata_startup_script    = <<-EOT
+        #!/bin/bash
+        
+        apt update -y
+        apt install -y apache2
+        
+        cat <<'EOF' > /var/www/html/index.html
+        <html>
+        <head>
+        <title>SEIR Lab Node</title>
+        <style>
+        body {
+          background-color:black;
+          color:lime;
+          font-family:monospace;
+        }
+        pre {
+          font-size:14px;
+        }
+        </style>
+        </head>
+        <body>
+        
+        <h1>SEIR Infrastructure Node Online</h1>
+        
+        <pre>
+        
+                        ▄████████████████████████▄
+                     ▄████████████████████████████▄
+                   ▄████████████████████████████████▄
+                  ████████████████████████████████████
+                 ██████████████████████████████████████
+                ████████████████████████████████████████
+                ████████████████████████████████████████
+                ████████████████████████████████████████
+                 ██████████████████████████████████████
+                  ████████████████████████████████████
+                   ██████████████████████████████████
+                    ████████████████████████████████
+                      ████████████████████████████
+                        ████████████████████████
+                         ██████████████████████
+                          ████████████████████
+                            ████████████████
+                              ████████████
+                                ████████
+                                  ████
+        
+        </pre>
+        
+        <p>The infrastructure is operational.</p>
+        <p>Terraform is watching.</p>
+        <p>Do not anger the state file.</p>
+        
+        </body>
+        </html>
+        EOF
+        
+        systemctl enable apache2
+        systemctl restart apache2
+    EOT
+    min_cpu_platform           = null
+    name                       = "cloudshell"
+    project                    = "training-416401"
+    self_link                  = "https://www.googleapis.com/compute/v1/projects/training-416401/zones/us-central1-a/instances/cloudshell"
+    tags                       = [
+        "http-server",
+    ]
+    tags_fingerprint           = "FYLDgkTKlA4="
+    terraform_labels           = {
+        "goog-terraform-provisioned" = "true"
+    }
+    zone                       = "us-central1-a"
+
+    boot_disk {
+        auto_delete                     = true
+        device_name                     = "persistent-disk-0"
+        disk_encryption_key_raw         = (sensitive value)
+        disk_encryption_key_rsa         = (sensitive value)
+        disk_encryption_key_sha256      = null
+        disk_encryption_service_account = null
+        force_attach                    = false
+        guest_os_features               = [
+            "UEFI_COMPATIBLE",
+            "VIRTIO_SCSI_MULTIQUEUE",
+            "GVNIC",
+        ]
+        interface                       = null
+        kms_key_self_link               = null
+        mode                            = "READ_WRITE"
+        source                          = "https://www.googleapis.com/compute/v1/projects/training-416401/zones/us-central1-a/disks/cloudshell"
+
+        initialize_params {
+            architecture                = "X86_64"
+            enable_confidential_compute = false
+            image                       = "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-11-bullseye-v20260428"
+            labels                      = {}
+            provisioned_iops            = 0
+            provisioned_throughput      = 0
+            resource_policies           = []
+            size                        = 10
+            snapshot                    = null
+            storage_pool                = null
+            type                        = "pd-standard"
+        }
+    }
+
+    network_interface {
+        igmp_query                  = null
+        internal_ipv6_prefix_length = 0
+        ipv6_access_type            = null
+        ipv6_address                = null
+        name                        = "nic0"
+        network                     = "https://www.googleapis.com/compute/v1/projects/training-416401/global/networks/default"
+        network_attachment          = null
+        network_ip                  = "10.128.0.35"
+        nic_type                    = null
+        parent_nic_name             = null
+        queue_count                 = 0
+        stack_type                  = "IPV4_ONLY"
+        subnetwork                  = "https://www.googleapis.com/compute/v1/projects/training-416401/regions/us-central1/subnetworks/default"
+        subnetwork_project          = "training-416401"
+        vlan                        = 0
+
+        access_config {
+            nat_ip                 = "34.133.103.235"
+            network_tier           = "PREMIUM"
+            public_ptr_domain_name = null
+        }
+    }
+
+    scheduling {
+        automatic_restart           = true
+        availability_domain         = 0
+        instance_termination_action = null
+        min_node_cpus               = 0
+        on_host_maintenance         = "MIGRATE"
+        preemptible                 = false
+        provisioning_model          = "STANDARD"
+        termination_time            = null
+    }
+
+    shielded_instance_config {
+        enable_integrity_monitoring = true
+        enable_secure_boot          = false
+        enable_vtpm                 = true
+    }
+}
