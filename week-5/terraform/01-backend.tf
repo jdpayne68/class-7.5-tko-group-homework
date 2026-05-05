@@ -8,7 +8,7 @@
 terraform {
   backend "gcs" {
     bucket = "kirkdevsecops-terraform-state"
-    prefix = "week-b-homework/dev"
+    prefix = "week-5-homework/dev"
   }
 }
 
