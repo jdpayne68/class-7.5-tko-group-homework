@@ -4,6 +4,9 @@
 #vscoode files
 .vscode/
 
+#TF Lock Files
+.terraform.lock.hcl
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
