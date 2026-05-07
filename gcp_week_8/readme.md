@@ -48,30 +48,30 @@ Steps
 2. **Create Instance Group**
 - Click on the 3 hash sign in the top left corner, on the side bar click on Compute Engine, then click on the Instance Group pop-out.
 Click on Create Instance 
-![3 Hash](/screenshots/top_left.png)
-![Compute Engine](/screenshots/compute_engine.png)
-![Instance Group](/screenshots/create_instance_group.png)
+![3 Hash](./screenshots/top_left.png)
+![Compute Engine](./screenshots/compute_engine.png)
+![Instance Group](./screenshots/create_instance_group.png)
 
 ---
 3. **Multiple Zones Set-up**
 - Once inside name it and choose the instance template from the drop down.  
 Go to Location and choose Multiple Zones, make sure its in the correct region, the zones are correct, and set the target distribution shape.
-![Name](/screenshots/name.png)
-![Location](/screenshots/location.png)
+![Name](./screenshots/name.png)
+![Location](./screenshots/location.png)
 ---
 
 4. **Autoscaling Set-up**
 - Click on Configure Autoscaling in the Autoscaling section set Autoscaling mode and set the min and max number of instances.
 Set Autoscaling signals and Predictive autoscaling. 
 Autoscaling schedules leave default
-![Configure Autoscaling](/screenshots/configure_auto.png)
-![Autoscaling Configure](/screenshots/setup_auto.png)
+![Configure Autoscaling](./screenshots/configure_auto.png)
+![Autoscaling Configure](./screenshots/setup_auto.png)
 ---
 
 5. **VM Instance Lifecycle**
 - Action on failure leave default
 Set-up autohealing, click on Health check and the dropdown and click on Create a health check
-![VM Lifecycle](/screenshots/vm_instance_lifecycle.png)
+![VM Lifecycle](./screenshots/vm_instance_lifecycle.png)
 ---
 
 6. **Health Check Set-up**
@@ -82,14 +82,14 @@ Port = 80
 Logs = On
 Health criteria leave default click save to create the health check.
 Leave the rest default and click on Create at the bottom to create the Instance Group.
-![Health Check Set-up](/screenshots/healthcheck1.png)
-![Health Criteria](/screenshots/healthcheck2.png)
-![Create Instance Group](/screenshots/finish.png)
+![Health Check Set-up](./screenshots/healthcheck1.png)
+![Health Criteria](./screenshots/healthcheck2.png)
+![Create Instance Group](./screenshots/finish.png)
 --- 
 
 7. **Verify Multiple Zones**
 - To verify Multiple Zones go to the Instance Group look at the instance group and lookat the location
-![Verify Multiple Zones](/screenshots/verify_multiple_zones.png)
+![Verify Multiple Zones](./screenshots/verify_multiple_zones.png)
 
 # Q & A 
 ---
