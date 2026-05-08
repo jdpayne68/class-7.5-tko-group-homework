@@ -32,7 +32,7 @@ resource "helm_release" "kube_prometheus_stack" {
   depends_on = [
     google_container_cluster.dev_main_cluster,
     google_container_node_pool.general_workers
-    ]
+  ]
 
   # depends_on = [
   #   null_resource.get_credentials

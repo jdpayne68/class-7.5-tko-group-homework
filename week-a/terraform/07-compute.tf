@@ -25,13 +25,13 @@ resource "google_compute_instance" "vm_dashboard" {
   metadata_startup_script = file("${path.module}../scripts/gcp_startup.sh")
 
   # Configuration for template Files
-#   metadata_startup_script = templatefile("${path.module}/templates/gcp_startup.sh.tpl",
-#   {
-#       template_var_1  = value,
-#       template_var_2  = value,
-#       template_var_3  = value,
-#     }
-#   )
+  #   metadata_startup_script = templatefile("${path.module}/templates/gcp_startup.sh.tpl",
+  #   {
+  #       template_var_1  = value,
+  #       template_var_2  = value,
+  #       template_var_3  = value,
+  #     }
+  #   )
 
   tags = ["ssh", "http", "http-server"]
 
