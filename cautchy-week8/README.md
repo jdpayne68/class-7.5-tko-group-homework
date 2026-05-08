@@ -25,7 +25,7 @@ Both of them are compute.healthcheck in GCP. They both work through being polled
 
 - Explain in a few sentences what the 3 tier architecture is and how it relates to what you are learning. 
 
-3-tier architecture refers to having a presentation tier (1 : front end), a logic tier (2 : application/brain of the project) and a data tier (3 : back-end database). Everythign we build seems to have 
+3-tier architecture refers to having a presentation tier (1 : front end), a logic tier (2 : application/brain of the project) and a data tier (3 : back-end database). When it comes to the event driven architecture that we are learning to build, the event generation happens in tier 1; the processing (event is noticed, triggers the next action) happens in tier 2 
 
 ## Runbook
 
@@ -34,7 +34,9 @@ Both of them are compute.healthcheck in GCP. They both work through being polled
 
 
 ### Prerequisites (what do I need to have ready to make this happen?)
-
+- A project in GCP
+- API enabled
+- instance template to define the VMs being configured
 
 ## Terraform
 
