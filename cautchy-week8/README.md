@@ -37,6 +37,61 @@ Both of them are compute.healthcheck in GCP. They both work through being polled
 - A project in GCP
 - API enabled
 - instance template to define the VMs being configured
+- startup script for the VMs
+
+## Achieving the goal in ClickOps
+
+If you do not yet have the instance template for the VMs in the MIG then go ahead and:
+
+### Creating the Instance Template
+- Go to Compute Engine > Instance Templates > Create Instance template
+- Name - week8-centos-startup
+- Boot disk
+    - Operating system : CentOS
+    - Version : CentOS Stream 10
+- Firewall - allows HTTP
+- Advanced configurations
+	- Networking
+		- Network tags : http-server
+		- Network interfaces : make sure that it is the default for this
+	- Management
+		- Startup script : use the startup.sh file (found at https://raw.githubusercontent.com/aaron-dm-mcdonald/class7.5-notes/refs/heads/main/week-8/hw/startup-for-rhel.sh)
+
+![alt text](<ClickOps Artifacts/instance_template.png>) [alt text](README.md)
+
+### Creating the Managed Instance Group
+- Go to Compute Engine > Instance Groups > Create instance group
+    - Select "New managed instance group (stateless)
+    - Name : week8-centos-hwk
+    - Instance template : week8-centos-startup
+    - Number of instances : 4 (this portion doesn't matter if you are planning on setting up autoscaling)
+    - Location : multiple zones
+    - Autoscaling 
+        - autoscaling mode : on
+        - minimum number of instances : 4
+        - maximum number of instances : 10
+    - VM instance lifecycle 
+        - default action on failure : repair instance
+        - Autohealing
+            - Health check : create a health check
+                - name : week8-centos-healthcheck
+                - scope : regional
+                - protocol : TCP
+                - port : 80
+                - logs : on
+                - health criteria : 
+                    - check interval : 5 seconds
+                    - timeout : 5 seconds
+                    - healthy threshold : 2 consec. successes
+                    - unhealth threshold : 2 consec. failures
+	- Create the MIG then wait for the green check under status that lets you know that it is properly deployed
+![alt text](<ClickOps Artifacts/managed_instance_group.png>) [alt text](README.md)
+
+    - SSH into one of the instances to make sure that all is well
+![alt text](<ClickOps Artifacts/ssh_check.png>)
+
+    - take the external IP of one of the instances and, in a new tab go to http://yourexternalip
+![alt text](<ClickOps Artifacts/website.png>)
 
 ## Terraform
 
@@ -69,6 +124,8 @@ Both of them are compute.healthcheck in GCP. They both work through being polled
 - Explain the difference between the "name" argument and the compound "id" and "self_link" attributes
     - with name being an argument, you fill it out and provide the information for the resource to be built. With the "id" argument
 
+
+## Screenshots
 
 
 RESOURCES USED: 
