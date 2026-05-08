@@ -1,3 +1,5 @@
+# Week 8 GCP Homework + BAM
+
 ## Q&A (each answer between 1 and 5 sentences)
 - What is the difference between high availability and fault tolerance? Which is best to strive for? 
 
@@ -85,15 +87,20 @@ If you do not yet have the instance template for the VMs in the MIG then go ahea
                     - healthy threshold : 2 consec. successes
                     - unhealth threshold : 2 consec. failures
 	- Create the MIG then wait for the green check under status that lets you know that it is properly deployed
-![alt text](<ClickOps Artifacts/managed_instance_group.png>) [alt text](README.md)
+
+![MIG](<ClickOps Artifacts/managed_instance_group.png>) [alt text](README.md)
 
     - SSH into one of the instances to make sure that all is well
-![alt text](<ClickOps Artifacts/ssh_check.png>)
+
+![SSH test](<ClickOps Artifacts/ssh_check.png>)
 
     - take the external IP of one of the instances and, in a new tab go to http://yourexternalip
-![alt text](<ClickOps Artifacts/website.png>)
+
+![website](<ClickOps Artifacts/website.png>)
 
 ## Terraform
+
+- Before starting the process, run 'gcloud config list' in the terminal and confirm that the project and your account is well configured
 
 - Mandatory Requirements for a VM in Terraform (GCP)
     - VM resource name for Terraform in GCP : google_compute_instance
@@ -123,9 +130,6 @@ If you do not yet have the instance template for the VMs in the MIG then go ahea
 
 - Explain the difference between the "name" argument and the compound "id" and "self_link" attributes
     - with name being an argument, you fill it out and provide the information for the resource to be built. With the "id" argument
-
-
-## Screenshots
 
 
 RESOURCES USED: 

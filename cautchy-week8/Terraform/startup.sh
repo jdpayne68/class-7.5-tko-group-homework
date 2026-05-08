@@ -19,10 +19,10 @@ cat > /var/www/html/index.html << EOF
   <h1>VM Metadata</h1>
   <h2>Instance Name: $NAME</h2>
   <h2>Internal IP: $IP</h2>
-  <h2>Colombian prize included for free!</h2>
+  <h2>BUNDA! BUNDA! BUNDA!...</h2>
   <figure>
-    <img src="https://test-1256099743.s3.us-east-2.amazonaws.com/Colombian/imgi_22_551283556_24677511425231259_7293143846320648055_n.jpg" alt="Colombian prize!" style="max-width:600px; width:100%; display:block; margin:1rem 0;">
-    <figcaption>Colombian prize!</figcaption>
+    <img src="https://i.pinimg.com/736x/6e/47/a2/6e47a2778e3ffe02ade527f09de0244c.jpg" alt="Round where it counts" style="max-width:600px; width:100%; display:block; margin:1rem 0;">
+    <figcaption>Round where it counts</figcaption>
   </figure>
 </body>
 </html>
