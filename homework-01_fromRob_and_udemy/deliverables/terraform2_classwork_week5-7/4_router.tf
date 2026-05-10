@@ -11,6 +11,7 @@ resource "google_compute_router" "router" {
     asn = 64514
   }
 
+
   depends_on = [
     google_compute_network.main
   ]
