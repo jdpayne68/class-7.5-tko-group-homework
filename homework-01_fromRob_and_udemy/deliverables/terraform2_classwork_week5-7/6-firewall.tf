@@ -24,6 +24,7 @@ resource "google_compute_firewall" "allow_http-main" {
     ports    = ["80"]
   }
 
+  # this is a lab, in production you would want to limit this to specific IPs or ranges
   source_ranges = ["0.0.0.0/0"]
 
   depends_on = [
@@ -41,6 +42,24 @@ resource "google_compute_firewall" "allow_https-main" {
     protocol = "tcp"
     #Lab only, in production you would want to limit this to specific IPs or ranges
     ports    = ["443"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+
+  depends_on = [
+    google_compute_network.main
+  ]
+}
+
+# port 500 udp
+# port 500 is used for IKE (Internet Key Exchange) which is a protocol used to set up a secure and authenticated communication channel between two parties, typically for VPN (Virtual Private Network) connections. IKE is responsible for negotiating the security parameters and establishing the secure connection between the two parties. By allowing incoming UDP traffic on port 500, you are enabling the use of IKE for VPN connections, which can be important for secure remote access to resources in the network.
+resource "google_compute_firewall" "allow_udp-main" {
+  name    = "allow-udp"
+  network = google_compute_network.main.name
+
+  allow {
+    protocol = "udp"
+    ports    = ["500"]
   }
 
   source_ranges = ["0.0.0.0/0"]
