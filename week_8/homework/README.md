@@ -118,3 +118,4 @@ id is a unique identifier given by GCP
 self_link the full url path to the resource, used by apis  
 
 ---
+issues i found the n2-standard-2 did not work in deployment. 
