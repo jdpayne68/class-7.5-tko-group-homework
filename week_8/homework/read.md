@@ -58,3 +58,30 @@ So the steps are:
 
 Section called Terraform
 _____________________________
+ mandatory (required) arguments for a VM in terraform
+    name: resource name inside GCP
+    machine type: defines cpu/ram
+    zone: where the vm runs
+    boot_disk: includes image
+    network_interface; defines vpc and subnet
+ Explain how to output the internal and external IP addresses of the provisioned VM and how you figured this out 
+  write output code in terraform
+    output "internal_ip" {
+        value = google_compute_instance.vm.network_interface[0].network_ip
+    }
+
+        output "external_ip" {
+        value = google_compute_instance.vm.network_interface[0].access_config[0].nat_ip
+    }
+
+Choose 2 non-required arguments and give an explanation for both (do not copy and paste the reference material) 
+ metadata: this is the ky/value data to the VM, often used for startup scripts
+ labels: key/value tages for billing, automation
+         
+
+Explain how you would figure out the correct format for creating a VM with the “centOS stream 10” image (the specific image is up to you). 
+    you can use a gcloud command to find this. Use gcloud compute images list to search the GCP catalog
+   We can identify the project, image family and image naem 
+
+Explain the difference between the “name” argument and the computed “id” and “self_link” attributes 
+    
