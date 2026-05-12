@@ -32,8 +32,28 @@ Database : storage for application data
 section called RunBook:
 __________________________
 
+I want to create a managed instance group created via Clickops
+I want to host an app on a instance group via a instance in an instance template.  Once the instance template is made, I make an instance modeled on the template. Then I want the instance be in a group so they can be managed automatically by a MIG. This will enable autoscaling and autohealing. Also, we need to make sure that we choose Regional which is multizone for this to work(at least two zones) I need to make at least three for this to work or it will not work. I need to also make sure http is clicked so that the app can be visible online. 
 
+So the steps are: 
+1. Create the Managed Instance Group
+    Go to Compute Engine
+        Instance groups 
+        Create instance group.
 
+    Select Managed instance group.
+
+    Choose Regional (required for multi‑zone).
+
+    Select your instance template.
+
+    Choose at least two zones in the region.
+
+2. enable autoscaling
+    choose On: autoscale by CPU(for metrics)
+
+3. Enable autohealing
+    this is where you attach a health check
 
 
 Section called Terraform
