@@ -117,6 +117,3 @@ Configure routing so that:
 
 Optional: Add Cloud CDN and include notes on configuration decisions.
 
----
-
-If you want, I can also format this into a more formal, more concise, or more detailed version.
