@@ -1,0 +1,58 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Terraform
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+tfplan
+*.tfplan
+
+# Logs
+*.log
+logs/
+*.out
+
+# Local configs / secrets
+.env
+.env.*
+smtp_credentials/
+
+# Node / frontend (if present)
+node_modules/
+dist/
+build/
+
+# VS Code / JetBrains
+.vscode/
+.idea/
+.history/
+
+# CI artifacts
+workspace/
+*.zip
+*.tar
+*.tar.gz
+
+# Misc
+.cache/
