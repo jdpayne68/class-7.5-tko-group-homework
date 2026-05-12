@@ -84,4 +84,6 @@ Explain how you would figure out the correct format for creating a VM with the �
    We can identify the project, image family and image naem 
 
 Explain the difference between the “name” argument and the computed “id” and “self_link” attributes 
-    
+    name is the resource name you assign
+    id is a unique identifier given by GCP
+    self_link the full url path to the resource, used by apis
