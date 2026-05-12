@@ -9,7 +9,7 @@ terraform {
 
 provider "google" {
   # Configuration options
-    project = "training-416401"
+  project = "training-416401"
   region  = "us-central1"
-  zone    = "us-central1-a"
+  zone    = "us-central1-b"
 }
