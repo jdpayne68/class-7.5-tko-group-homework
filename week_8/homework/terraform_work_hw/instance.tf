@@ -1,14 +1,16 @@
 resource "google_compute_instance" "web_vm" {
   name         = "centos-stream10-web"
-  machine_type = "n2-standard-2"   # N-series machine type
-  zone         = "us-central1-a"
+  # machine_type = "n2-standard-2" # N-series machine type
+  machine_type = "e2-standard-4" # E-series machine type
 
-  tags = ["http-server"]           # Enables port 80 via default firewall rule
+  zone         = "us-central1-b"
+
+  tags = ["http-server"] # Enables port 80 via default firewall rule
 
   boot_disk {
     initialize_params {
       image = "centos-cloud/centos-stream-10"
-      size  = 100                  # 100 GB root disk
+      size  = 100 # 100 GB root disk
     }
   }
 
