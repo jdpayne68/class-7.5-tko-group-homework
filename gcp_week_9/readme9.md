@@ -3,8 +3,12 @@
 Goal: to create fully configure external application global load balancer in clickops, with a MIG as the backend. And showing how to connect the load balancer up to a MIG.
 
 Prerequisites:
+
 Google Account
+
 Global Instance Template
+
+Locust
 
 
 ## Steps
@@ -101,6 +105,9 @@ Global Instance Template
 8.  When it is done creating click on it and find the IP:Port copy the ip address (the 4 octet) and paste it into your browser (ex.http://0.0.0.0)
 ![IP Address](./screenshots/load_balancing_ip_address_015.png)
     - This will check if it has been setup correctly, if done correctly this is how it should look.
+    ![SC Instance Group](./screenshots/load_balancing_website1_016.png)
+    - It should cycle through the Instance Groups
+    ![Berlin Instance Group](./screenshots/load_balancing_website2_017.png)
 
 
 **Section 4 Teardown** 
@@ -109,7 +116,7 @@ Global Instance Template
 2. On the load balancer page click on backends check the box for the backend and click delete at the top 
 ![Delete Backends](./screenshots/teardown_backend_03.png)
 3. Go to Instance group page check on the instance groups and click delete at the top 
-![Delete Instance Groups]()
+![Delete Instance Groups](./screenshots/teardown_instance_group_02.png)
 4. Go to Health check page check on the health check and click delete at the top 
 ![Delete Health Checks](./screenshots/teardown_health_check_04.png)
 
@@ -117,46 +124,119 @@ Global Instance Template
 
 ** Note the backend has to be deleted first, health checks can't be deleted if in use by a backend.
 
+**Bonus Create a Bucket**
+1. Go to the 3 hashes on the top left corner Cloud Storage -> Buckets
+![Create Bucket 1](./screenshots/create_bucket_01.png)
+2. Click on create bucket
+![Create Bucket 2](./screenshots/create_bucket_02.png)
+3. Name the bucket click -> Continue, leave the rest of the chooses as default 
+![Create Bucket 3](./screenshots/create_bucket_03.png)
+![Create Bucket 4](./screenshots/create_bucket_04.png)
+![Create Bucket 5](./screenshots/create_bucket_05.png)
+4. Click on create bucket in the bottom left 
+![Create Bucket 6](./screenshots/create_bucket_06.png)
 
 
 # Q&A
 
 ## Load Balancers
 
-How does load balancing contribute to Fault tolerance? What about high availability? 
+**How does load balancing contribute to Fault tolerance? What about high availability?** 
 
-Do global load balancers decrease latency for end users? Why or why not? 
+It checks for unhealthy or failed instances/servers and routes traffic to the healthy instances/servers that protects against downtime. That also insures that SLA is being honored.
 
-What are LB health checks for? Do we always need them? Is a LB different from a reverse proxy? 
+**Do global load balancers decrease latency for end users? Why or why not?** 
 
-What are LB routing rules and URL maps for? Give an example or two of them in use. 
+Yes by way one of its features CDN, by sending traffic to the nearest edge location to the user, this cached content can be drawn upon when need at a much quicker rate.
 
-Explain what an anycast IP address is used for in the context of a global load balancer. 
+**What are LB health checks for? Do we always need them? Is a LB different from a reverse proxy?**
+
+They check for the health of instances, see if its failed/unhealthy and redirects traffic to healthy instances/servers. Yes in production envirnomentsand you need high avialabilty with minimum downtime. They are similar like they both sit in front of servers, but do different things, Load Balancers deals with spreading traffic around multiple servers, reverse proxy deals with one or more and manages the server.
+
+
+**What are LB routing rules and URL maps for? Give an example or two of them in use.**
+
+Routing rules are the set of methods used to move traffic to the correct destination, URL maps are whats used to route by using the routing rules, they work together to move traffic. Proximity based routing which uses the closest instance to the traffic source to get to the destination.
+
+**Explain what an anycast IP address is used for in the context of a global load balancer.**
+
+Anycast allows the use of a single IP address, so only one GLB is needed for multiple locations.
+
+[Load Balancer](https://cloud.google.com/blog/topics/developers-practitioners/google-cloud-global-external-https-load-balancer-deep-dive)
+
+[Reverse Proxy 1](https://www.f5.com/glossary/web-application-firewall-waf)
+
+[Reverse Proxy 2](https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/)
+
+[Reverse Proxy Vs. Load Balancer](https://www.upguard.com/blog/reverse-proxy-vs-load-balancer)
+
+[Anycast](https://en.wikipedia.org/wiki/Anycast)
 
 
 ## Cloud Armor
 
-What does cloud armor offer? 
+**What does cloud armor offer?**
 
-Why is it used in the first place?
+It offers protections to application and websites aaginst Denial of Service (DDoS) and other website attacks (SQL Injection, cross-site scripting, etc.).
 
-What layer in the OSI model does it operate at? Why is this important and how is this firewall different from VPC firewall rules? 
+**Why is it used in the first place?**
 
+To protect against website attacks/intrusions, also the fact that more of these attacks are starting to become common, especially considering how the majority of jobs now incorpporates some form of network infrastructure, services like this are needed more and more.
+
+**What layer in the OSI model does it operate at? Why is this important and how is this firewall different from VPC firewall rules?**
+
+It operates at Layer 7 Application (front), at the same time it does provider defense for Layer 3 & 4 as well. It works on the frontend to keep thing secure and protect against DDoS attacks, VPC firewall are rules for the network Layers 3 & 4, as opposed to cloud armor which does provide some defense for Layers 3 & 4 it mainly works at Layer 7. 
 What are rate based rules for? 
 
-What is reCAPTCHA and how does it relate to this service? 
+**What is reCAPTCHA and how does it relate to this service?**
+
+reCAPTCHA is a bot blocking tool, its used to confirm if the person is human, cloud armor can incorporate reCAPTCHA for bot protection.
+
+[Cloud Armor Overview](https://docs.cloud.google.com/armor/docs/cloud-armor-overview)
+
+[Cloud Armor](https://cloud.google.com/blog/topics/developers-practitioners/when-should-i-use-cloud-armor)
+
+[Cloud Armor Policy](https://docs.cloud.google.com/armor/docs/security-policy-overview)
+
+[reCAPTCHA](https://cloud.google.com/security/products/recaptcha?hl=en)
+
+[OSI Model](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/)
+
+[Layer 7](https://www.cloudflare.com/learning/ddos/what-is-layer-7/)
+
 
 
 ## Cloud CDN
 
-What are POPs used for? 
+**What are POPs used for?**
 
-What kind of files are served with Cloud CDN? 
+Points of Presence (POP) are used to get cached content from a edge location to users without having to connect to the origin server.
 
-What services can be used with cloud CDN for the source of content (the origin)? 
 
-Does Cloud CDN help protect against any types of malicious actors or cyberattacks? Explain. 
+**What kind of files are served with Cloud CDN?**
 
-Should an enterprise always use cloud CDN? Why or why not? 
-What is TTL and how does it control content “freshness”? 
+It serves cached content such as images, video, webpages, scripts and font files 
 
+**What services can be used with cloud CDN for the source of content (the origin)?**
+
+Any services that uses HTTP/HTTPS, like Compute Engines (VM), Cloud Storage (buckets), Kubernates, Load Balancers, and Serverless
+
+**Does Cloud CDN help protect against any types of malicious actors or cyberattacks? Explain.**
+
+Yes its a frontend barrier of entry to the origin, by using caching attackers usually won't be able to hit the origin server.  Using this in tandem with Cloud Armor is what makes this a powerful protection tool. 
+
+**Should an enterprise always use cloud CDN? Why or why not? What is TTL and how does it control content “freshness”?** 
+
+It depends on the enterprise if its global I believe its beneficiary to use with edge locations and being able to cache information and get it redistributed quicky through the CDN, if its smaller and mostly internal (local) the caching doesn't help and that service wouldn't be fully taken advantage of. It is time to live, it controls how long data is cached before it expires.
+
+[Cloud CDN 1](https://docs.cloud.google.com/cdn/docs/overview)
+
+[Cloud CDN 2](https://www.geeksforgeeks.org/cloud-computing/what-is-google-cloud-cdn/)
+
+[Cloud CDN 3](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/)
+
+[CDN Best Pratices](https://docs.cloud.google.com/cdn/docs/best-practices)
+
+[TTL 1](https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl/)
+
+[TTL 2](https://docs.cloud.google.com/cdn/docs/using-ttl-overrides)

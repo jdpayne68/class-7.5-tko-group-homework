@@ -431,7 +431,7 @@ Document whether they were able to access:
 
 ### Screenshot 1: Project Folder in VS Code
 
-![VScode Folder](/screenshots/01-vscode_folder.png)
+![VScode Folder](./screenshots/01-vscode_folder.png)
 
 Description:
 
@@ -443,7 +443,7 @@ Description:
 
 ### Screenshot 2: Downloaded Static Assets
 
-![Downloaded Assets](/screenshots/02-download_assests.png)
+![Downloaded Assets](./screenshots/02-download_assests.png)
 
 Description:
 
@@ -454,7 +454,7 @@ Description:
 
 ### Screenshot 3: Backend
 
-![Backend](/screenshots/03-backend.png)
+![Backend](./screenshots/03-backend.png)
 
 Description:
 
@@ -463,7 +463,7 @@ Description:
 
 ### Screenshot 4: Terraform Init
 
-![Terraform Init](/screenshots/04-terraform_init.png)
+![Terraform Init](./screenshots/04-terraform_init.png)
 
 Description:
 
@@ -474,7 +474,7 @@ Description:
 
 ### Screenshot 5: Terraform Validate
 
-![Terraform Validate](/screenshots/05-terraform_validate.png)
+![Terraform Validate](./screenshots/05-terraform_validate.png)
 
 Description:
 
@@ -485,7 +485,7 @@ Description:
 
 ### Screenshot 6: Terraform Plan
 
-![Terraform Plan](/screenshots/06-terraform_plan.png)
+![Terraform Plan](./screenshots/06-terraform_plan.png)
 
 Description:
 
@@ -496,7 +496,7 @@ Description:
 
 ### Screenshot 7: Terraform Apply
 
-![Terraform Apply](/screenshots/07-terraform_apply.png)
+![Terraform Apply](./screenshots/07-terraform_apply.png)
 
 Description:
 
@@ -507,7 +507,7 @@ Description:
 
 ### Screenshot 8: GCS Bucket Created
 
-![GCS Bucket](/screenshots/08-bucket_created.png)
+![GCS Bucket](./screenshots/08-bucket_created.png)
 
 Description:
 
@@ -518,7 +518,7 @@ Description:
 
 ### Screenshot 9: Objects Uploaded to Bucket
 
-![Uploaded Objects](/screenshots/09-bucket_objects.png)
+![Uploaded Objects](./screenshots/09-bucket_objects.png)
 
 Description:
 
@@ -529,7 +529,7 @@ Description:
 
 ### Screenshot 10: Public Website Loaded in Browser
 
-![Website Browser Test](/screenshots/010-website.png)
+![Website Browser Test](./screenshots/010-website.png)
 
 Description:
 
@@ -540,7 +540,7 @@ Description:
 
 ### Screenshot 11: Public Access Test from Terminal
 
-![Curl Test](/screenshots/011-curl_test.png)
+![Curl Test](./screenshots/011-curl_test.png)
 
 Description:
 
@@ -551,7 +551,7 @@ Description:
 
 ### Screenshot 12: Classmate Access Confirmation
 
-![Classmate Access](/screenshots/012-classmate_access.png)
+![Classmate Access](./screenshots/012-classmate_access.png)
 
 Description:
 
@@ -562,7 +562,7 @@ Description:
 
 ### Screenshot 13: Terraform Destroy
 
-![Terraform Destroy](/screenshots/013-terraform_destroy.png)
+![Terraform Destroy](./screenshots/013-terraform_destroy.png)
 
 Description:
 

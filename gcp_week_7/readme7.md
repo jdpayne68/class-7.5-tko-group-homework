@@ -369,7 +369,7 @@ Use this section to show proof of your work. Add screenshots after completing th
 
 Add a screenshot showing your project folder and Terraform files.
 
-![Project Folder](/screenshots/01-provider_folder.png)
+![Project Folder](./screenshots/01-provider_folder.png)
 
 Description:
 
@@ -379,7 +379,7 @@ Description:
 
 ### Screenshot 2: Terraform Init Successful
 
-![Terraform Init](/screenshots/02-terraform_init.png)
+![Terraform Init](./screenshots/02-terraform_init.png)
 
 Description:
 
@@ -395,7 +395,7 @@ terraform init
 
 ### Screenshot 3: Terraform Validate Successful
 
-![Terraform Validate](/screenshots/03-terraform_validate.png)
+![Terraform Validate](./screenshots/03-terraform_validate.png)
 
 Description:
 
@@ -411,7 +411,7 @@ terraform validate
 
 ### Screenshot 4: Terraform Plan Output
 
-![Terraform Plan](/screenshots/04-terraform_plan.png)
+![Terraform Plan](./screenshots/04-terraform_plan.png)
 
 Description:
 
@@ -427,7 +427,7 @@ terraform plan
 
 ### Screenshot 5: Terraform Apply Complete
 
-![Terraform Apply](/screenshots/05-terraform_apply.png)
+![Terraform Apply](./screenshots/05-terraform_apply.png)
 
 Description:
 
@@ -443,7 +443,7 @@ terraform apply
 
 ### Screenshot 6: Terraform Output Showing VPC Name
 
-![Output](/screenshots/06-output.png)
+![Output](./screenshots/06-output.png)
 
 Description:
 
@@ -465,7 +465,7 @@ vpc_name = "your_vpc_name"
 
 ### Screenshot 7: Local File Created by Terraform
 
-![Local File](/screenshots/07-local_file.png)
+![Local File](./screenshots/07-local_file.png)
 
 Description:
 
@@ -482,7 +482,7 @@ cat favorite_food.txt
 
 ### Screenshot 8: GCP Console VPC Verification
 
-![VPC Verification](/screenshots/08-console_vpc_verification.png)
+![VPC Verification](./screenshots/08-console_vpc_verification.png)
 
 Description:
 
@@ -492,7 +492,7 @@ Description:
 
 ### Screenshot 9: Terraform Destroy
 
-![Terraform Destroy](/screenshots/09-terraform_destroy.png)
+![Terraform Destroy](./screenshots/09-terraform_destroy.png)
 
 Description:
 
