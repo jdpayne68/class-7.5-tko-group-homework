@@ -1,5 +1,5 @@
 # Terraform 
----
+
 The mandatory (required) arguments for a VM in terraform 
 - boot_disk = boot disk for  the instance 
 - machine_type = to create
@@ -30,11 +30,11 @@ I would go into the google cloud console, go to create an instance, click on OS 
 
 All are different forms of identifers for resources: name is a identifer created by you and must be unique, id is a formatted identifier for a resource, uri is a identifier for the address of the resource.
 
----
+
 
 # Runbook 
----
-Goal: to create a fully confirgured managed instance group in clickops, with autoscaling, autohealing, and health checks enabled, and be able to verify the group will manage across multiple zones.
+
+Goal: to create a fully configured managed instance group in clickops, with autoscaling, autohealing, and health checks enabled, and be able to verify the group will manage across multiple zones.
 
 Prerequisites:
 - Google Cloud Account
@@ -92,7 +92,7 @@ Leave the rest default and click on Create at the bottom to create the Instance 
 ![Verify Multiple Zones](./screenshots/verify_multiple_zones.png)
 
 # Q & A 
----
+
 - What is the difference between high availability and fault tolerance? Which is best to strive for?
 
     High Availability is to ensure an agreed level of operational performance think reliability and fault tolerance is a systems's ability to continue operating despite failures or malfunctions.  I believe the best to strive for is fault tolerance especially in a production setting as any downtime can cost companys millions of dollars.  
