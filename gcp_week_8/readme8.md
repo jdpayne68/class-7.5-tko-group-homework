@@ -126,3 +126,16 @@ Leave the rest default and click on Create at the bottom to create the Instance 
    [Three-tier](https://www.ibm.com/think/topics/three-tier-architecture)
 
    [Google Three-tier](https://docs.cloud.google.com/load-balancing/docs/application-load-balancer#three-tier_web_services)
+
+
+   ## Author & Contributors
+
+**Author:** `Joe Tolliver`
+
+**Group Leader:** `Jacques Paune`
+
+**Group Name:** `T.K.O.`
+
+**Date:** `5/6/2026`
+
+**Version:** `1.0`
