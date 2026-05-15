@@ -246,7 +246,7 @@ It depends on the enterprise if its global I believe its beneficiary to use with
 
 **Author:** `Joe Tolliver`
 
-**Group Leader:** `Jacques Paune`
+**Group Leader:** `Jacques Payne`
 
 **Group Name:** `T.K.O.`
 

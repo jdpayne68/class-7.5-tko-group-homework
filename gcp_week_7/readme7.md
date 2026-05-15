@@ -601,7 +601,7 @@ Possible challenges included:
 
 **Contributors:**
 
-**Group Leader:** `Jacques Paune`
+**Group Leader:** `Jacques Payne`
 
 **Group Name:** `T.K.O.`
 

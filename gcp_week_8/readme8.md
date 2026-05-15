@@ -132,7 +132,7 @@ Leave the rest default and click on Create at the bottom to create the Instance 
 
 **Author:** `Joe Tolliver`
 
-**Group Leader:** `Jacques Paune`
+**Group Leader:** `Jacques Payne`
 
 **Group Name:** `T.K.O.`
 
