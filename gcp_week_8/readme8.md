@@ -128,7 +128,7 @@ Leave the rest default and click on Create at the bottom to create the Instance 
    [Google Three-tier](https://docs.cloud.google.com/load-balancing/docs/application-load-balancer#three-tier_web_services)
 
 
-   ## Author & Contributors
+## Author & Contributors
 
 **Author:** `Joe Tolliver`
 

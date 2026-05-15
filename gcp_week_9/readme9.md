@@ -240,3 +240,16 @@ It depends on the enterprise if its global I believe its beneficiary to use with
 [TTL 1](https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl/)
 
 [TTL 2](https://docs.cloud.google.com/cdn/docs/using-ttl-overrides)
+
+
+## Author & Contributors
+
+**Author:** `Joe Tolliver`
+
+**Group Leader:** `Jacques Paune`
+
+**Group Name:** `T.K.O.`
+
+**Date:** `5/13/2026`
+
+**Version:** `1.0`
