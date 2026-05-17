@@ -1,9 +1,6 @@
 # SEIR-1 Week 9 Homework
 
 Week: 9: Cloud NAT, Global Load Balancing, Cloud CDN, Cloud Armor  
-Assigned: Fri 5/8/26  
-Due: Thu 5/14/26  
-Last updated: May 15, 2026
 
 ## Progress
 
