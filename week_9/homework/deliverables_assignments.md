@@ -42,7 +42,8 @@ We need this to monitor the health of servers, vms, backend services. Load balan
     public applications are constantly attacked.  Cloud armor blocks malicious traffice before it reaches your backend, reducing risk and protecting your infrastructur.
 - What OSI layer does it operate at? Why is this important, and how is this firewall different from VPC firewall rules?   layer 7 application layer, it undestandds HTTPS traffic, it can block specific urls, headers, patterns, also against attackes like XSS, Bots. Thi is different from VPC firewall rules, which operate at layer3/4. VPC firewalls cannot inspect HTTP content: cloud armor can 
 - What are rate‑based rules for?  
-- What is reCAPTCHA and how does it relate to this service?
+Rate‑based rules limit how many requests a client can make in a given time window. it protects against Bots, scrapers, DDos attacks.
+- What is reCAPTCHA and how does it relate to this service? this helps distinguish between humans from bots. Cloud armor integrates with reCAPTCHA so you can challenge suspicous traffice before it reaches your app. 
 
 ### Cloud CDN
 - What are POPs used for?  
