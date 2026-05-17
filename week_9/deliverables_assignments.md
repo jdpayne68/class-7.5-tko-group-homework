@@ -23,12 +23,19 @@ This repository includes:
 - Do global load balancers decrease latency for end users? Why or why not?  
      It decreases latency because of google edge networking. They use anycast ips and route uses to the closest healthy google edge location.
 - What are LB health checks for? Do we always need them? Is a LB different from a reverse proxy?  
-We need this to monitor the health of servers, vms, backend services. Load balancers are a type of reverse proxy in that it routes traffic, performs health checks, supports rules. Reverse proxy sit between the user and the servers as a layer 7 osi and helps the same way. Even the documentation kind of allude them as very similar, I still have reservations about calling them the same. Something is off here. I need to do more research to settle on an opinion..]
+We need this to monitor the health of servers, vms, backend services. Load balancers are a type of reverse proxy in that it routes traffic, performs health checks, supports rules. Reverse proxy sit between the user and the servers as a layer 7 osi and helps the same way. Even the documentation kind of allude them as very similar, I still have reservations about calling them the same. Something is off here. I need to do more research to settle on an opinion.. I do not think all reverse proxies are Load balancers, though the reverse might be true.
 
 - What are LB routing rules and URL maps for? Provide examples.  
-
+    Routing rules and URL maps tell the load balancer how to decide where traffic should go
+    examples:
+    - api/  -- api backend service
+    - static/ - cloud cdn service
+    - chciago/ = chcicago backend
+    - missouri/ = missouri backend
+    This allows multiple services to live behind one global ip
 - Explain what an anycast IP address is used for in the context of a global load balancer.
-
+   - this is a single IP address advertised from any locations around the world. The google network will automatically route them to the closest location with the anycast ip.
+   
 ### Cloud Armor
 - What does Cloud Armor offer?  
 - Why is it used in the first place?  
