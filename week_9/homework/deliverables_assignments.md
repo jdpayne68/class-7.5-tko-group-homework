@@ -47,11 +47,12 @@ Rate‑based rules limit how many requests a client can make in a given time win
 
 ### Cloud CDN
 - What are POPs used for?  
-- What kind of files are served with Cloud CDN?  
-- What services can be used as origins?  
-- Does Cloud CDN help protect against malicious actors or cyberattacks? Explain.  
-- Should an enterprise always use Cloud CDN? Why or why not?  
-- What is TTL and how does it control content freshness?
+POPs (Points of Presence) are Google’s global edge locations.
+- What kind of files are served with Cloud CDN?  images, css, javascript, videos, videos, pdfs, static html
+- What services can be used as origins?  cloud storage buckes, backend services behind a load balancer, instance groups, cloud run serivces
+- Does Cloud CDN help protect against malicious actors or cyberattacks? Explain. Yes but indirectly, they help mitigate DDoS attacks, traffic spikes, bot scraping
+- Should an enterprise always use Cloud CDN? Why or why not?  It should use it when serving static content, global users, and when you wnat lower latency and lower backend load. Dont use it wen the content is dynamic or serve personallized or dynamic responses, caching is stale or incorrect
+- What is TTL and how does it control content freshness? Time to live,  It tells the CDN how long to keep cached content before checking the origin again.
 
 ---
 
