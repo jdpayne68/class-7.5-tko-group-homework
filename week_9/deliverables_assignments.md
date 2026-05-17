@@ -17,9 +17,16 @@ This repository includes:
 
 ### Load Balancers
 - How does load balancing contribute to fault tolerance? What about high availability?  
+    a load balancer helps by spreading traffic across multiple backend servers. If one crashes, the Load balancer simply stops sending traffic to it. Fault tolerance means the system keeps working even when something breaks. So if one node fails, the traffic is routed someplace else. 
+    High availability means the service stays reachable even during heavy load or regional outages.
+
 - Do global load balancers decrease latency for end users? Why or why not?  
+     It decreases latency because of google edge networking. They use anycast ips and route uses to the closest healthy google edge location.
 - What are LB health checks for? Do we always need them? Is a LB different from a reverse proxy?  
+We need this to monitor the health of servers, vms, backend services. Load balancers are a type of reverse proxy in that it routes traffic, performs health checks, supports rules. Reverse proxy sit between the user and the servers as a layer 7 osi and helps the same way. Even the documentation kind of allude them as very similar, I still have reservations about calling them the same. Something is off here. I need to do more research to settle on an opinion..]
+
 - What are LB routing rules and URL maps for? Provide examples.  
+
 - Explain what an anycast IP address is used for in the context of a global load balancer.
 
 ### Cloud Armor
