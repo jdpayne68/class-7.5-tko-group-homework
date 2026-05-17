@@ -1,0 +1,18 @@
+# Terraform state files - never commit these
+*.tfstate
+*.tfstate.backup
+
+# Terraform directory - provider binaries
+.terraform/
+.terraform.lock.hcl
+
+# Startup script - downloaded separately via curl
+startup.sh
+
+# Variable files that may contain secrets
+*.tfvars
+*.tfvars.json
+
+# Crash logs
+crash.log
+crash.*.log
