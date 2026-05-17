@@ -35,11 +35,12 @@ We need this to monitor the health of servers, vms, backend services. Load balan
     This allows multiple services to live behind one global ip
 - Explain what an anycast IP address is used for in the context of a global load balancer.
    - this is a single IP address advertised from any locations around the world. The google network will automatically route them to the closest location with the anycast ip.
-   
+
 ### Cloud Armor
-- What does Cloud Armor offer?  
+- What does Cloud Armor offer?  Cloud Armor is Google’s Web Application Firewall (WAF).
 - Why is it used in the first place?  
-- What OSI layer does it operate at? Why is this important, and how is this firewall different from VPC firewall rules?  
+    public applications are constantly attacked.  Cloud armor blocks malicious traffice before it reaches your backend, reducing risk and protecting your infrastructur.
+- What OSI layer does it operate at? Why is this important, and how is this firewall different from VPC firewall rules?   layer 7 application layer, it undestandds HTTPS traffic, it can block specific urls, headers, patterns, also against attackes like XSS, Bots. Thi is different from VPC firewall rules, which operate at layer3/4. VPC firewalls cannot inspect HTTP content: cloud armor can 
 - What are rate‑based rules for?  
 - What is reCAPTCHA and how does it relate to this service?
 
