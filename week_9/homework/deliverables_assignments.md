@@ -17,17 +17,33 @@ This repository includes:
 
 ### Load Balancers
 - How does load balancing contribute to fault tolerance? What about high availability?  
+    a load balancer helps by spreading traffic across multiple backend servers. If one crashes, the Load balancer simply stops sending traffic to it. Fault tolerance means the system keeps working even when something breaks. So if one node fails, the traffic is routed someplace else. 
+    High availability means the service stays reachable even during heavy load or regional outages.
+
 - Do global load balancers decrease latency for end users? Why or why not?  
+     It decreases latency because of google edge networking. They use anycast ips and route uses to the closest healthy google edge location.
 - What are LB health checks for? Do we always need them? Is a LB different from a reverse proxy?  
+We need this to monitor the health of servers, vms, backend services. Load balancers are a type of reverse proxy in that it routes traffic, performs health checks, supports rules. Reverse proxy sit between the user and the servers as a layer 7 osi and helps the same way. Even the documentation kind of allude them as very similar, I still have reservations about calling them the same. Something is off here. I need to do more research to settle on an opinion.. I do not think all reverse proxies are Load balancers, though the reverse might be true.
+
 - What are LB routing rules and URL maps for? Provide examples.  
+    Routing rules and URL maps tell the load balancer how to decide where traffic should go
+    examples:
+    - api/  -- api backend service
+    - static/ - cloud cdn service
+    - chciago/ = chcicago backend
+    - missouri/ = missouri backend
+    This allows multiple services to live behind one global ip
 - Explain what an anycast IP address is used for in the context of a global load balancer.
+   - this is a single IP address advertised from any locations around the world. The google network will automatically route them to the closest location with the anycast ip.
 
 ### Cloud Armor
-- What does Cloud Armor offer?  
+- What does Cloud Armor offer?  Cloud Armor is Google’s Web Application Firewall (WAF).
 - Why is it used in the first place?  
-- What OSI layer does it operate at? Why is this important, and how is this firewall different from VPC firewall rules?  
+    public applications are constantly attacked.  Cloud armor blocks malicious traffice before it reaches your backend, reducing risk and protecting your infrastructur.
+- What OSI layer does it operate at? Why is this important, and how is this firewall different from VPC firewall rules?   layer 7 application layer, it undestandds HTTPS traffic, it can block specific urls, headers, patterns, also against attackes like XSS, Bots. Thi is different from VPC firewall rules, which operate at layer3/4. VPC firewalls cannot inspect HTTP content: cloud armor can 
 - What are rate‑based rules for?  
-- What is reCAPTCHA and how does it relate to this service?
+Rate‑based rules limit how many requests a client can make in a given time window. it protects against Bots, scrapers, DDos attacks.
+- What is reCAPTCHA and how does it relate to this service? this helps distinguish between humans from bots. Cloud armor integrates with reCAPTCHA so you can challenge suspicous traffice before it reaches your app. 
 
 ### Cloud CDN
 - What are POPs used for?  
