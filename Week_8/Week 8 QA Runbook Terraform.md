@@ -68,6 +68,7 @@ Compute Engine > Instance Groups > create instance groups > Name the instance gr
 Health check > create a health check > name the health check (lowercase, no spaces, add description if desired/needed) > regional scope > TCP Port 80 > logs on > default health criteria (or whatever heath criteria is desired/needed) > save
 
 ![Autohealing Health Check](./HW_8_Screenshots/Autohealing_Health_Check.png)
+![Healthcheck example](./HW_8_Screenshots/Healthcheck_example.png)
 
 3) Once the MIG is created, wait for the green check under status that lets you know that it is properly deployed
 
