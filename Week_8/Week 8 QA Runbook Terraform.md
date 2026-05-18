@@ -55,27 +55,27 @@ Three‑tier architecture splits into presentation, application, and data layers
 1) Instance Template
 Click on the 3 hash sign in top left of corner > Compute Engine > Instance Template > create instance template > Name the instance > regional or global/choose appropriate region > select allow http traffic > provide the appropriate startup script > create
 
-(./HW_8_Screenshots/Navigation menu.png)
-(./HW_8_Screenshots/Compute_Engine_to_Image_Template.png)
-(./HW_8_Screenshots/Create_instance_template.png)
+![Navigation menu](./HW_8_Screenshots/Navigation menu.png)
+![Compute Engine to Image Template](./HW_8_Screenshots/Compute_Engine_to_Image_Template.png)
+![Create instance template](./HW_8_Screenshots/Create_instance_template.png)
 
 2) Instance group
 Compute Engine > Instance Groups > create instance groups > Name the instance group (add description if desired/needed) > select the appropriate instance template > put in the number of desired templates > Multiple zones > select region and zone > autoscaling > autoscaling mode: on > minimum number of instances: 4 & maximum: 10 > mandatory health check addition(autohealing check next step) > create
 
-(./HW_8_Screenshots/Compute_Engine_to_Instance_Group.png)
+![Compute Engine to Instance Group](./HW_8_Screenshots/Compute_Engine_to_Instance_Group.png)
 
 2) Health Check/Auto healing (must be created in instance group process)
 Health check > create a health check > name the health check (lowercase, no spaces, add description if desired/needed) > regional scope > TCP Port 80 > logs on > default health criteria (or whatever heath criteria is desired/needed) > save
 
-(./HW_8_Screenshots/Autohealing Health_Check.png)
+![Autohealing Health Check](./HW_8_Screenshots/Autohealing Health_Check.png)
 
 3) Once the MIG is created, wait for the green check under status that lets you know that it is properly deployed
 
-(./HW_8_Screenshots/MIG_double_check.png)
+![MIG double check](./HW_8_Screenshots/MIG_double_check.png)
 
 4) SSH into one of the instances to make sure everything is working properly
 
-(./HW_8_Screenshots/SSH_example.png)
+![SSH example](./HW_8_Screenshots/SSH_example.png)
 
 5) Take the external IP of one of the instances and, in a new tab go to http://yourexternalip
 
