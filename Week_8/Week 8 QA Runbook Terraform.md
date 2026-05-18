@@ -55,7 +55,7 @@ Three‑tier architecture splits into presentation, application, and data layers
 1) Instance Template
 Click on the 3 hash sign in top left of corner > Compute Engine > Instance Template > create instance template > Name the instance > regional or global/choose appropriate region > select allow http traffic > provide the appropriate startup script > create
 
-![Navigation menu](./HW_8_Screenshots/Navigation menu.png)
+![Navigation menu](./HW_8_Screenshots/Navigation_menu.png)
 ![Compute Engine to Image Template](./HW_8_Screenshots/Compute_Engine_to_Image_Template.png)
 ![Create instance template](./HW_8_Screenshots/Create_instance_template.png)
 
@@ -67,7 +67,7 @@ Compute Engine > Instance Groups > create instance groups > Name the instance gr
 2) Health Check/Auto healing (must be created in instance group process)
 Health check > create a health check > name the health check (lowercase, no spaces, add description if desired/needed) > regional scope > TCP Port 80 > logs on > default health criteria (or whatever heath criteria is desired/needed) > save
 
-![Autohealing Health Check](./HW_8_Screenshots/Autohealing Health_Check.png)
+![Autohealing Health Check](./HW_8_Screenshots/Autohealing_Health_Check.png)
 
 3) Once the MIG is created, wait for the green check under status that lets you know that it is properly deployed
 
