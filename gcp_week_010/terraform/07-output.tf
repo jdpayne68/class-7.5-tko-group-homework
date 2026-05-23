@@ -15,7 +15,7 @@ output "url_map" {
 }
 
 output "backend" {
-  value = google_compute_backend_service.wk10_wk10_rear_guard.id
+  value = google_compute_backend_service.wk10_rear_guard.id
 }
 
 output "proxy" {

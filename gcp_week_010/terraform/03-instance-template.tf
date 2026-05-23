@@ -15,7 +15,7 @@ resource "google_compute_instance_template" "wk10_double" {
     network = google_compute_network.wk10_gcp.id
     subnetwork = google_compute_subnetwork.wk9_power_core.id
 
-    access_config {}
+    access_config {} # allows a public external ip
   }
 
   metadata_startup_script = file("./startup.sh")

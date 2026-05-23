@@ -8,8 +8,8 @@ resource "google_compute_network" "wk10_gcp" {
   mtu                     = 1460
 }
 
-resource "google_compute_subnetwork" "wk9_power_core" {
-  name          = "wk9-subnetwork"
-  ip_cidr_range = "10.30.0.0/24"
-  network       = google_compute_network.wk9_gcp.id
+resource "google_compute_subnetwork" "wk10_power_core" {
+  name          = "${local.name_prefix}-subnetwork"
+  ip_cidr_range = "10.50.0.0/24"
+  network       = google_compute_network.wk10_gcp.id
 }
