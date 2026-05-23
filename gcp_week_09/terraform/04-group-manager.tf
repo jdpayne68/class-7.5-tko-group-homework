@@ -1,7 +1,7 @@
 resource "google_compute_health_check" "wk9_autohealing" {
   name                = "wk9-health-check"
-  check_interval_sec  = 5
-  timeout_sec         = 5
+  check_interval_sec  = 10
+  timeout_sec         = 10
   healthy_threshold   = 2
   unhealthy_threshold = 2
 
@@ -15,7 +15,7 @@ resource "google_compute_health_check" "wk9_autohealing" {
 ######################
 # MIG Multiply Zone 
 ######################
-resource "google_compute_region_instance_group_manager" "wk9_manage" {
+resource "google_compute_region_instance_group_manager" "wk9_primary" {
   name = "wk9-manage"
 
   base_instance_name = "wk9"
@@ -23,7 +23,7 @@ resource "google_compute_region_instance_group_manager" "wk9_manage" {
   distribution_policy_zones  = ["us-east1-b", "us-east1-c", "us-east1-d"]
 
   version {
-    instance_template  = google_compute_instance_template.wk9_template.self_link_unique
+    instance_template  = google_compute_instance_template.wk9_clone.self_link_unique
   }
 
   auto_healing_policies {
@@ -37,7 +37,7 @@ resource "google_compute_region_instance_group_manager" "wk9_manage" {
 ####################
 # MIG Single Zone
 ####################
-# resource "google_compute_instance_group_manager" "wk9_manage" {
+# resource "google_compute_instance_group_manager" "wk9_wk9_primary" {
 #   name = "wk9-manage"
 
 #   base_instance_name = "wk9"
@@ -45,7 +45,7 @@ resource "google_compute_region_instance_group_manager" "wk9_manage" {
  
 
 #   version {
-#     instance_template  = google_compute_instance_template.wk9_template.self_link_unique
+#     instance_template  = google_compute_instance_template.wk9_clone.self_link_unique
 #   }
 
 #   auto_healing_policies {

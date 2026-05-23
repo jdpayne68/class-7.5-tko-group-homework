@@ -2,10 +2,9 @@
 ########################
 # Multi Zone Autoscaler
 ########################
-resource "google_compute_region_autoscaler" "wk9-auto" {
+resource "google_compute_region_autoscaler" "wk9-quick" {
   name   = "wk9-autoscale"
-  region = "us-east1"
-  target = google_compute_region_instance_group_manager.wk9_manage.id
+  target = google_compute_region_instance_group_manager.wk9_primary.id
 
 
   autoscaling_policy {
@@ -23,10 +22,10 @@ resource "google_compute_region_autoscaler" "wk9-auto" {
 ###########################
 # Single Zone Autoscaler
 ###########################
-# resource "google_compute_autoscaler" "wk9-auto" {
+# resource "google_compute_autoscaler" "wk9-quick" {
 #   name   = "wk9-autoscale"
 #   zone   = "us-east1-b"
-#   target = google_compute_instance_group_manager.wk9_manage.id
+#   target = google_compute_instance_group_manager.wk9_wk9_primary.id
 
 
 #   autoscaling_policy {
