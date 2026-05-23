@@ -11,21 +11,21 @@ output "health_check" {
 }
 
 output "url_map" {
-  value = google_compute_url_map.wk10_url_map.id
+  value = google_compute_url_map.wk10_star_link.id
 }
 
 output "backend" {
-  value = google_compute_backend_service.wk10_backend.id
+  value = google_compute_backend_service.wk10_wk10_rear_guard.id
 }
 
 output "proxy" {
-  value = google_compute_target_http_proxy.wk10_proxy.id
+  value = google_compute_target_http_proxy.wk10_barrier.id
 }
 
 output "instance_group_manager" {
-  value = google_compute_region_instance_group_manager.wk10_manage.id
+  value = google_compute_region_instance_group_manager.wk10_overseer.id
 }
 
 output "template" {
-  value = google_compute_instance_template.wk10_template.self_link_unique
+  value = google_compute_instance_template.wk10_double.self_link_unique
 }

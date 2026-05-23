@@ -2,10 +2,10 @@
 ########################
 # Multi Zone Autoscaler
 ########################
-resource "google_compute_region_autoscaler" "wk10_auto" {
+resource "google_compute_region_autoscaler" "wk10_link" {
   name   = "${local.name_prefix}-autoscale"
   region = var.region
-  target = google_compute_region_instance_group_manager.wk10_manage.id
+  target = google_compute_region_instance_group_manager.wk10_overseer.id
 
 
   autoscaling_policy {
@@ -23,10 +23,10 @@ resource "google_compute_region_autoscaler" "wk10_auto" {
 ###########################
 # Single Zone Autoscaler
 ###########################
-# resource "google_compute_autoscaler" "wk10_auto" {
+# resource "google_compute_autoscaler" "wk10_link" {
 #   name   = "${local.name_prefix}-autoscale"
 #   zone   = var.region-b
-#   target = google_compute_instance_group_manager.wk10_manage.id
+#   target = google_compute_instance_group_manager.wk10_overseer.id
 
 
 #   autoscaling_policy {

@@ -1,4 +1,4 @@
-resource "google_compute_instance_template" "wk10_template" {
+resource "google_compute_instance_template" "wk10_double" {
   name_prefix  = "wk10"
   machine_type = var.machine_type
   region       = var.region

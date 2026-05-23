@@ -1,4 +1,4 @@
-resource "google_compute_firewall" "wk10_http" {
+resource "google_compute_firewall" "allow_http" {
   name    = "${local.name_prefix}-http"
   network = google_compute_network.wk10_gcp.name
 
@@ -12,7 +12,7 @@ resource "google_compute_firewall" "wk10_http" {
 }
 
 
-resource "google_compute_firewall" "wk10_ssh" {
+resource "google_compute_firewall" "allow_ssh" {
   name    = "${local.name_prefix}-ssh"
   network = google_compute_network.wk10_gcp.name
 
@@ -22,5 +22,5 @@ resource "google_compute_firewall" "wk10_ssh" {
   }
 
   source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["ssh-server"]
+  target_tags   = ["ssh-access"]
 }
