@@ -3,7 +3,7 @@ resource "google_compute_instance_template" "wk10_double" {
   machine_type = var.machine_type
   region       = var.region
 
-  tags = ["http-server"] #connects to firewall target_tag
+  tags = ["http-server", "ssh-access"] #connects to firewall target_tag
 
   disk {
     source_image = "debian-cloud/debian-12"
@@ -12,8 +12,8 @@ resource "google_compute_instance_template" "wk10_double" {
   }
 
   network_interface {
-    network = google_compute_network.wk10_gcp.id
-    subnetwork = google_compute_subnetwork.wk9_power_core.id
+    network    = google_compute_network.wk10_gcp.id
+    subnetwork = google_compute_subnetwork.wk10_power_core.id
 
     access_config {} # allows a public external ip
   }

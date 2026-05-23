@@ -2,7 +2,7 @@ resource "google_compute_instance_template" "wk9_clone" {
   name_prefix  = "wk9"
   machine_type = "e2-medium"
 
-  tags = ["http-server"] #connects to firewall target_tag
+  tags = ["http-server", "ssh-access"] #connects to firewall target_tag
 
   disk {
     source_image = "debian-cloud/debian-12"

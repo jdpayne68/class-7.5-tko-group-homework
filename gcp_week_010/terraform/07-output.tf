@@ -29,3 +29,7 @@ output "instance_group_manager" {
 output "template" {
   value = google_compute_instance_template.wk10_double.self_link_unique
 }
+
+output "lb_ip" {
+  value = "http://${google_compute_global_address.frontend.address}"
+}
