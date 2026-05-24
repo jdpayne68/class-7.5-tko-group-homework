@@ -4,7 +4,7 @@ locals {
 
 resource "google_compute_network" "wk10_gcp" {
   name                    = "${local.name_prefix}-gcp"
-  auto_create_subnetworks = true
+  auto_create_subnetworks = false
   mtu                     = 1460
 }
 

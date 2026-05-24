@@ -1,7 +1,7 @@
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_forwarding_rule#example-usage---global-forwarding-rule-external-managed
 
-resource "google_compute_global_address" "frontend" {
-  name = "${local.name_prefix}-frontend"
+resource "google_compute_global_address" "wk10_front" {
+  name = "${local.name_prefix}-front"
 }
 
 resource "google_compute_url_map" "wk10_star_link" {
@@ -18,9 +18,9 @@ resource "google_compute_global_forwarding_rule" "wk10_glb" {
   name                  = "${local.name_prefix}-global"
   target                = google_compute_target_http_proxy.wk10_barrier.id
   port_range            = "80"
-  ip_protocol = "TCP"
+  ip_protocol           = "TCP"
   load_balancing_scheme = "EXTERNAL_MANAGED" # make it not classic application # EXTERNAL is default and is the classic
-  ip_address = google_compute_global_address.frontend.address
+  ip_address            = google_compute_global_address.wk10_front.address
 }
 
 
