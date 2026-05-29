@@ -10,6 +10,6 @@ resource "google_compute_network" "wk10_gcp" {
 
 resource "google_compute_subnetwork" "wk10_power_core" {
   name          = "${local.name_prefix}-subnetwork"
-  ip_cidr_range = "10.50.0.0/24"
+  ip_cidr_range = "10.50.0.0/16"
   network       = google_compute_network.wk10_gcp.id
 }
