@@ -3,5 +3,5 @@
 # ----------------------------------------------------------------
 
 resource "google_compute_network" "dev_sandbox" {
-  name = "dev-sandbox"
+  name = "${local.name_prefix}-sandbox"
 }

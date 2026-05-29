@@ -6,3 +6,15 @@ variable "billing_account_id" {
   default     = "01BB2F-8195CD-645BC0"
   type        = string
 }
+
+variable "app" {
+  type        = string
+  description = "Application name used for unique resource name prefixes."
+  default     = "c7-5-week-b"
+}
+
+variable "env" {
+  type        = string
+  description = "Environment name used for unique resource name prefixes."
+  default     = "dev"
+}

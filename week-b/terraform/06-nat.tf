@@ -3,7 +3,7 @@
 # ----------------------------------------------------------------
 
 resource "google_compute_router_nat" "nat" {
-  name   = "nat"
+  name   = "${local.name_prefix}-nat"
   router = google_compute_router.router.name
   region = "us-central1"
 
@@ -23,7 +23,7 @@ resource "google_compute_router_nat" "nat" {
 }
 
 resource "google_compute_address" "nat" {
-  name         = "nat"
+  name         = "${local.name_prefix}-nat"
   region       = "us-central1"
   address_type = "EXTERNAL"
   network_tier = "PREMIUM"

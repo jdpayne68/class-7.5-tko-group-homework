@@ -4,7 +4,7 @@
 
 # VM - VM Dashboard
 resource "google_compute_instance" "vm_dashboard" {
-  name                      = "vm-dashboard"
+  name                      = "${local.name_prefix}-vm-dashboard"
   machine_type              = "e2-medium"
   zone                      = "us-central1-a"
   allow_stopping_for_update = true # Allows Terraform to stop/start the VM for updates that require a stopped state (avoids recreation when possible)
@@ -54,7 +54,7 @@ resource "google_compute_instance" "vm_dashboard" {
 
 # VM - VM Instance
 resource "google_compute_instance" "vm_instance" {
-  name                      = "vm-instance"
+  name                      = "${local.name_prefix}-vm-instance"
   machine_type              = "e2-medium"
   zone                      = "us-central1-a"
   allow_stopping_for_update = true # Allows Terraform to stop/start the VM for updates that require a stopped state (avoids recreation when possible)

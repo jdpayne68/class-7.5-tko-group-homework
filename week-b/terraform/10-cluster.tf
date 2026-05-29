@@ -4,7 +4,7 @@
 # Kubernetes control plane, core networking, and security settings
 
 resource "google_container_cluster" "dev_main_cluster" {
-  name     = "dev-main-cluster"
+  name     = "${local.name_prefix}-dev-main-cluster"
   location = "us-central1-a"
 
   # Remove default node pool (managed separately via node pools)

@@ -3,7 +3,7 @@
 # ----------------------------------------------------------------
 
 resource "google_compute_firewall" "allow_ssh" {
-  name    = "allow-ssh"
+  name    = "${local.name_prefix}-allow-ssh"
   network = google_compute_network.main.name
 
   allow {
@@ -19,7 +19,7 @@ resource "google_compute_firewall" "allow_ssh" {
 }
 
 resource "google_compute_firewall" "allow_http" {
-  name    = "allow-http"
+  name    = "${local.name_prefix}-allow-http"
   network = google_compute_network.main.name
 
   allow {
@@ -36,7 +36,7 @@ resource "google_compute_firewall" "allow_http" {
 
 # Port 8080 used for custom health checks via flask app
 resource "google_compute_firewall" "allow_8080" {
-  name    = "allow-http-8080"
+  name    = "${local.name_prefix}-allow-http-8080"
   network = google_compute_network.main.name
 
   allow {

@@ -3,7 +3,7 @@
 # ----------------------------------------------------------------
 
 resource "google_compute_instance" "vm_dashboard" {
-  name         = "devsecops-dashboard"
+  name         = "${local.name_prefix}-devsecops-dashboard"
   machine_type = "e2-medium"
   zone         = "us-central1-a"
 
@@ -22,8 +22,7 @@ resource "google_compute_instance" "vm_dashboard" {
   }
 
   # Use startup script file
-  metadata_startup_script = file("${path.module}../scripts/gcp_startup.sh")
-
+  metadata_startup_script = file("${path.module}/../scripts/gcp_startup.sh")
   # Configuration for template Files
   #   metadata_startup_script = templatefile("${path.module}/templates/gcp_startup.sh.tpl",
   #   {

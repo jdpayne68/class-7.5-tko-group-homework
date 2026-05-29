@@ -8,7 +8,7 @@
 # Default node pool for regular workloads.
 # Fixed size (no autoscaling) for predictable baseline capacity.
 resource "google_container_node_pool" "general_workers" {
-  name       = "general-workers"
+  name       = "${local.name_prefix}-general-workers"
   cluster    = google_container_cluster.dev_main_cluster.id
   node_count = 1
 
@@ -46,7 +46,7 @@ resource "google_container_node_pool" "general_workers" {
 # ----------------------------------------------------------------
 # Use spot VMs for non-critical or fault-tolerant workloads.
 resource "google_container_node_pool" "spot_workers" {
-  name    = "spot-workers"
+  name    = "${local.name_prefix}-spot-workers"
   cluster = google_container_cluster.dev_main_cluster.id
 
   management {
