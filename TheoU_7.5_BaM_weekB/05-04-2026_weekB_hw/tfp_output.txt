@@ -1,0 +1,49 @@
+Add a prefix to plan file? (y/N): [0m[1mgoogle_service_account.gsa_service_a: Refreshing state... [id=projects/kirk-devsecops-sandbox/serviceAccounts/service-a@kirk-devsecops-sandbox.iam.gserviceaccount.com][0m
+[0m[1mgoogle_project_service.container: Refreshing state... [id=kirk-devsecops-sandbox/container.googleapis.com][0m
+[0m[1mgoogle_project_service.compute: Refreshing state... [id=kirk-devsecops-sandbox/compute.googleapis.com][0m
+[0m[1mgoogle_service_account.kubernetes: Refreshing state... [id=projects/kirk-devsecops-sandbox/serviceAccounts/kubernetes@kirk-devsecops-sandbox.iam.gserviceaccount.com][0m
+[0m[1mgoogle_service_account.vm_dashboard: Refreshing state... [id=projects/kirk-devsecops-sandbox/serviceAccounts/vm-dashboard@kirk-devsecops-sandbox.iam.gserviceaccount.com][0m
+[0m[1mgoogle_compute_disk.grafana_disk: Refreshing state... [id=projects/kirk-devsecops-sandbox/zones/us-central1-a/disks/grafana-disk][0m
+[0m[1mgoogle_project_iam_member.vm_dashboard_monitoring_viewer: Refreshing state... [id=kirk-devsecops-sandbox/roles/monitoring.viewer/serviceAccount:vm-dashboard@kirk-devsecops-sandbox.iam.gserviceaccount.com][0m
+[0m[1mgoogle_billing_account_iam_member.vm_dashboard_billing_viewer: Refreshing state... [id=01BB2F-8195CD-645BC0/roles/billing.viewer/serviceAccount:vm-dashboard@kirk-devsecops-sandbox.iam.gserviceaccount.com][0m
+[0m[1mgoogle_project_iam_member.vm_dashboard_bigquery_job_user: Refreshing state... [id=kirk-devsecops-sandbox/roles/bigquery.jobUser/serviceAccount:vm-dashboard@kirk-devsecops-sandbox.iam.gserviceaccount.com][0m
+[0m[1mgoogle_project_iam_member.vm_dashboard_recommender_viewer: Refreshing state... [id=kirk-devsecops-sandbox/roles/recommender.viewer/serviceAccount:vm-dashboard@kirk-devsecops-sandbox.iam.gserviceaccount.com][0m
+[0m[1mgoogle_project_iam_member.vm_dashboard_bigquery_data_viewer: Refreshing state... [id=kirk-devsecops-sandbox/roles/bigquery.dataViewer/serviceAccount:vm-dashboard@kirk-devsecops-sandbox.iam.gserviceaccount.com][0m
+[0m[1mgoogle_project_iam_member.service_a_storage_admin: Refreshing state... [id=kirk-devsecops-sandbox/roles/storage.admin/serviceAccount:service-a@kirk-devsecops-sandbox.iam.gserviceaccount.com][0m
+[0m[1mgoogle_service_account_iam_member.service_a_workload_identity: Refreshing state... [id=projects/kirk-devsecops-sandbox/serviceAccounts/service-a@kirk-devsecops-sandbox.iam.gserviceaccount.com/roles/iam.workloadIdentityUser/serviceAccount:kirk-devsecops-sandbox.svc.id.goog[staging/service-a]][0m
+[0m[1mgoogle_compute_network.main: Refreshing state... [id=projects/kirk-devsecops-sandbox/global/networks/main][0m
+[0m[1mgoogle_compute_address.nat: Refreshing state... [id=projects/kirk-devsecops-sandbox/regions/us-central1/addresses/nat][0m
+[0m[1mgoogle_compute_router.router: Refreshing state... [id=projects/kirk-devsecops-sandbox/regions/us-central1/routers/router][0m
+[0m[1mgoogle_compute_firewall.allow_http: Refreshing state... [id=projects/kirk-devsecops-sandbox/global/firewalls/allow-http][0m
+[0m[1mgoogle_compute_subnetwork.private: Refreshing state... [id=projects/kirk-devsecops-sandbox/regions/us-central1/subnetworks/private-subnet][0m
+[0m[1mgoogle_compute_firewall.allow_ssh: Refreshing state... [id=projects/kirk-devsecops-sandbox/global/firewalls/allow-ssh][0m
+[0m[1mgoogle_compute_firewall.allow_8080: Refreshing state... [id=projects/kirk-devsecops-sandbox/global/firewalls/allow-http-8080][0m
+[0m[1mgoogle_compute_router_nat.nat: Refreshing state... [id=kirk-devsecops-sandbox/us-central1/router/nat][0m
+[0m[1mgoogle_compute_instance.vm_dashboard: Refreshing state... [id=projects/kirk-devsecops-sandbox/zones/us-central1-a/instances/vm-dashboard][0m
+[0m[1mgoogle_compute_instance.vm_instance: Refreshing state... [id=projects/kirk-devsecops-sandbox/zones/us-central1-a/instances/vm-instance][0m
+[0m[1mgoogle_container_cluster.dev_main_cluster: Refreshing state... [id=projects/kirk-devsecops-sandbox/locations/us-central1-a/clusters/dev-main-cluster][0m
+[0m[1mnull_resource.gke_get_credentials: Refreshing state... [id=1012393952289390050][0m
+[0m[1mgoogle_container_node_pool.spot_workers: Refreshing state... [id=projects/kirk-devsecops-sandbox/locations/us-central1-a/clusters/dev-main-cluster/nodePools/spot-workers][0m
+[0m[1mgoogle_container_node_pool.general_workers: Refreshing state... [id=projects/kirk-devsecops-sandbox/locations/us-central1-a/clusters/dev-main-cluster/nodePools/general-workers][0m
+[0m[1mhelm_release.kube_prometheus_stack: Refreshing state... [id=kube-prometheus-stack][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+[31m-[0m/[32m+[0m destroy and then create replacement[0m
+
+Terraform will perform the following actions:
+
+[1m  # null_resource.gke_get_credentials[0m must be [1m[31mreplaced[0m
+[0m[31m-[0m/[32m+[0m[0m resource "null_resource" "gke_get_credentials" {
+      [33m~[0m[0m id       = "1012393952289390050" -> (known after apply)
+      [33m~[0m[0m triggers = { [31m# forces replacement[0m[0m
+          [33m~[0m[0m "always_run" = "2026-05-05T02:57:40Z" -> (known after apply)
+        }
+    }
+
+[1mPlan:[0m [0m1 to add, 0 to change, 1 to destroy.
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
