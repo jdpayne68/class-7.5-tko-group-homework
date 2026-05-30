@@ -39,6 +39,7 @@ In a section called **“Q&A”**, answer the following:
     key exchange: the client and server securely agree on a shared session key
     encrypted comm begins: all further traffic is encrypted using the session key
 - **How does an SSL/TLS cert know what domain it belongs to?**  
+   
 - **What is a certificate authority?**
 
 ## Load Balancers
