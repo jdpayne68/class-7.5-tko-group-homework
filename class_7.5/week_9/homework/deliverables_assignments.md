@@ -1,106 +1,141 @@
 
+
 ---
 
 # README
 
 ## Deliverables
-
-### Standard Guidelines
-- Use your normal HW GitHub repo to submit this.  
-- Include all documentation and resources you used, **and how you used them**, and be specific.  
-- Add a README of some kind for this week.  
-
-### Individual Work
-For all questions and documentation assume I am a junior employee new to cloud infrastructure. Assume I have some technical knowledge but you will be covering these concepts from the ground up. No need to be highly technical in these answers. I want to see that you understand and how well you can explain the topics of discussion, not how well you can copy/paste from the internet.
-
-In a section called **“Q&A”**, answer the following:
+This repository includes:
+- Documentation and resources used this week, with explanations of how each was used  
+- A Q&A section written for a junior cloud engineer  
+- A runbook for deploying an external Application Global Load Balancer using ClickOps  
+- A Terraform directory containing required infrastructure code  
+- Additional configuration for “Be a Man 1” and “Be a Man 2”
 
 ---
 
-# Q&A
+# Q&A  
+*(All answers should be written assuming the reader is a junior engineer with some technical background. Keep explanations clear, grounded, and from first principles.)*
 
-## DNS and SSL/TLS
+### Load Balancers
+- How does load balancing contribute to fault tolerance? What about high availability?  
+    a load balancer helps by spreading traffic across multiple backend servers.  fault system means when something breaks, everything still works. So, the traffic is routed someplace when a node fails
+    High availability means the service stays reachable even during heavy load or regional outages
 
-- **Explain what the traceroute and dig commands do. Compare and contrast.**  
-   traceroutes shows the path your traffic etakes accross the internet
-   dig is a DNS lookup tool
-   you use dig whhen a domain isnt resolving or you want to inspect the dns
-   You use traceroute when the traffic is slow, blocked, or routing incorrectly
+- Do global load balancers decrease latency for end users? Why or why not?  
+     It decreases latency because of google edge networking. Globale edge networking allows nodes to be available around the world for higher availability.  They use anycast ips and route uses to the closest healthy google edge location.
 
-- **What are the 3 or 4 most common DNS records and what are their use cases?**  
-    A record maps domain to IP4 addesses
-    AAAA record maps a domain to ipv6 addresses
-    CName record points one domain to another
-    mx record tells the itnernet where to deliver email for a domain
-- **Give an overview of the steps in a TLS handshake.**  
-    client hello when the browser says i want connect securely. and it gives the encryption methods
-    server hello and certificate: server send back the chosen encryptionmethod and itss SSL/TLS cert
-    cert validation: the browser checks it the cert is valid, it is signed by a trusted cert authority
-    key exchange: the client and server securely agree on a shared session key
-    encrypted comm begins: all further traffic is encrypted using the session key
-- **How does an SSL/TLS cert know what domain it belongs to?**  
-- **What is a certificate authority?**
+- What are LB health checks for? Do we always need them? Is a LB different from a reverse proxy?  
+     These check to see if Load balancer nodes (servers, vms, etc.) are healthy. Load balancers are a type of reverse proxy in that it routes modified payloads in traffic, performs health chesk and supports rules.  Even the documentation kind of allude them as very similar, I still have reservations about calling them the same. Something is off here. I need to do more research to settle on an opinion.. I do not think all reverse proxies are Load balancers, though the reverse might be true.
 
-## Load Balancers
+- What are LB routing rules and URL maps for? Provide examples.  
+    Routing rules and URL maps tell the load balancer how to decide where traffic should go  
+    examples:  
+    - api/  -- api backend service  
+    - static/ - cloud cdn service  
+    - chciago/ = chcicago backend  
+    - missouri/ = missouri backend  
+  
 
-- **How do application load balancers in GCP offload (decrypt) SSL? What part of the load balancer does this?**  
-- **Are there use cases to have in‑flight encryption from the backend service to the backend itself?**
+- Explain what an anycast IP address is used for in the context of a global load balancer.  
+   - this is a single IP address advertised from any locations around the world. The google network will automatically route them to the closest location with the anycast ip.
 
-## Cloud Domain/DNS
+### Cloud Armor
+- What does Cloud Armor offer?  
+  Cloud Armor is Google’s Web Application Firewall (WAF).
 
-- **Can multiple domains end up pointing to the same LB?**  
-- **In the context of Cloud DNS, what are zones?**
+- Why is it used in the first place?  
+    public applications are constantly attacked. Cloud armor blocks malicious traffice before it reaches your backend, reducing risk and protecting your infrastructur.
 
----
+- What OSI layer does it operate at? Why is this important, and how is this firewall different from VPC firewall rules?  
+   layer 7 application layer, it undestandds HTTPS traffic, it can block specific urls, headers, patterns, also against attackes like XSS, Bots. Thi is different from VPC firewall rules, which operate at layer3/4. VPC firewalls cannot inspect HTTP content: cloud armor can.
 
-# Runbook (Group Work)
+- What are rate‑based rules for?  
+Rate‑based rules limit how many requests a client can make in a given time window. it protects against Bots, scrapers, DDos attacks. So, I think it is like when I ran a webscraper on youtube and it started blocking my requests after several tries.
 
-In a section called **“runbook”**:
+- What is reCAPTCHA and how does it relate to this service?  
+  this helps distinguish between humans from bots. Cloud armor integrates with reCAPTCHA so you can challenge suspicous traffice before it reaches your app.
 
-- You write your own runbook, test it with a partner, but work on it as a group of any size or your entire group. Ask your group leader for input.  
-- Use the typical runbook format.
+### Cloud CDN
+- What are POPs used for?  
+POPs (Points of Presence) are Google’s global edge locations.
 
-### Background
-A drunk cloud engineer tried to update some settings. They broke several things. The VM now is not accessible as a web server on the public internet and SSH does not work.
+- What kind of files are served with Cloud CDN?  
+  images, css, javascript, videos, videos, pdfs, static html
 
-### Goal
-Troubleshoot and repair a VM that does not work correctly. Create a runbook so in the future when engineers are drunk it is easier to troubleshoot. Document all methods used even if they did not find the current issue as they may be helpful in the future.
+- What services can be used as origins?  
+  cloud storage buckes, backend services behind a load balancer, instance groups, cloud run serivces
 
-### Additional Requirements
-- Write a support ticket documenting:
-  - What was happening when you first observed the VM  
-  - What you expected it to do  
-  - What the root cause was  
-  - A reference to your newly created documentation (the “anti‑drunk engineer runbook”)  
-- Ensure you document every step and method you use.  
-- Don’t look at the script. Let it create the environment and simply start investigating and documenting.  
-- Any troubleshooting methods that are valuable should be documented.
+- Does Cloud CDN help protect against malicious actors or cyberattacks? Explain.  
+  Yes but indirectly, they help mitigate DDoS attacks, traffic spikes, bot scraping
 
-### Script to Create the Broken Environment
-```
-curl -s https://storage.googleapis.com/static-site-bucket-522479235074/broken-env-with-prechecks-v2.sh | bash
-```
+- Should an enterprise always use Cloud CDN? Why or why not?  
+  It should use it when serving static content, global users, and when you wnat lower latency and lower backend load. Dont use it wen the content is dynamic or serve personallized or dynamic responses, caching is stale or incorrect
 
-You will need gcloud properly configured; bash/git bash available (shouldn’t be an issue for anyone unless you’re using a less common Linux distro) OR simply use the GCP Cloud Shell.
-
-The script now has preflight checks to ensure you have gcloud setup and don’t have the environment provisioned already.
-
-Test it by having a group mate (or multiple) use this runbook to accomplish the goal after they create the environment on their own GCP account.
+- What is TTL and how does it control content freshness?  
+  Time to live, It tells the CDN how long to keep cached content before checking the origin again.
 
 ---
 
-# Terraform Requirements
+# Runbook  
+*(This section is for engineers executing the task. Keep it high‑level, procedural, and free of unnecessary explanation.)*
 
-In a subdirectory called **“terraform”**, create the following:
+## Goal
+Deploy a fully configured external Application Global Load Balancer using ClickOps, backed by a Managed Instance Group, including health checks and correct wiring between components.
 
-### Requirements
-- Follow normal practices (gitignore, Terraform best practices, etc)  
-- Use settings from class  
-- Create a VPC, firewall rules, VM template, health check, and MIG  
-- Ideally create the Global Application LB too (HTTP only)  
-- Use variables (only when appropriate) and use locals  
-- Use a tfvars file  
-- Use outputs  
-- **Don’t use AI. AI = automatic failure**
+## Prerequisites
+- GCP project with billing enabled  
+- Required IAM permissions  
+- Instance template prepared  
+- Managed Instance Group deployed  
+- Firewall rules allowing health check ranges  
+- Basic understanding of GCP networking and load balancing components
+
+## Steps
+1. Create or verify the Managed Instance Group.  
+2. Create a health check appropriate for the application.  
+3. Create a backend service and attach the MIG and health check.  
+4. Create a URL map and configure routing rules.  
+5. Create the global external Application Load Balancer and attach the URL map.  
+6. Configure the frontend (HTTP/HTTPS) and assign an external IP.  
+7. Review and create the load balancer.  
+8. Test the configuration to confirm correct routing and health check behavior.  
+9. Document any deviations from class settings and justify them.
 
 ---
+
+# Terraform Directory Requirements
+
+## Required Files
+- `.gitignore`  
+- `main.tf`  
+- `variables.tf`  
+- `outputs.tf`  
+- `vpc.tf`  
+- `firewall.tf`  
+- `mig.tf`  
+- `loadbalancer.tf`  
+- Any additional logically separated files
+
+## Critical Requirements
+- No state files or lock files committed  
+- No provider binaries committed  
+- Code must run with `terraform init`, `terraform validate`, and `terraform apply`  
+- All code written by the student or group  
+- Follow Terraform best practices and style guide  
+- Use latest provider version  
+- Include informative outputs  
+- Use comments to make the code self‑documenting  
+- Explain any non‑obvious values or arguments  
+- No unnecessary resources
+
+## Configuration Requirements
+- Custom VPC  
+- Firewall rules using target tags  
+- Managed Instance Group with class‑consistent settings  
+- External global load balancer (Be a Man 1)  
+- Two backend services with path‑based routing (Be a Man 2)  
+- Optional Cloud CDN configuration with notes
+
+---
+
