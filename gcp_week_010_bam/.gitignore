@@ -1,0 +1,54 @@
+
+# Terraform & OpenTofu
+# Local .terraform folder (provider binaries, modules)
+**/.terraform/*
+
+# .tfstate files (Contains secrets and infrastructure mapping)
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Sensitive variable files
+*.tfvars
+*.tfvars.json
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# .terraform.lock.hcl (Optional: some teams commit this to lock provider versions, 
+# but if you prefer complete fresh installs, ignore it)
+# .terraform.lock.hcl
+
+
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+
+# Compressed
+*.zip
+*.tar.gz
+
+
+# Logs & JSON
+*.log
+*.json
+
+
+# System & IDE Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
